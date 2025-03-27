@@ -91,5 +91,3 @@ plt.show()
 - Understanding projectile motion is crucial in ballistics, sports physics, and aerospace engineering.
 
 ---
-
-This document provides a theoretical background, useful formulas, solved examples, and computational implementation to explore the dependence of range on the angle of projection.

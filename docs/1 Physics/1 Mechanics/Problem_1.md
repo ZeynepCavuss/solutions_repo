@@ -1,4 +1,5 @@
 # Problem 1
+# Problem 1
 # Investigating the Range as a Function of the Angle of Projection
 
 ## 1. Theoretical Foundation
@@ -64,7 +65,7 @@ $$ H \approx 5.1 \text{ m} $$
 ## 4. Computational Implementation
 
 To visualize the relationship between range and angle, we implement a Python simulation:
-
+![alt text](image-1.png)
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -90,4 +91,3 @@ plt.show()
 - Understanding projectile motion is crucial in ballistics, sports physics, and aerospace engineering.
 
 ---
-

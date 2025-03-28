@@ -82,7 +82,6 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
-![alt text](image.png)
 
 ## 5. Discussion and Real-World Applications
 
@@ -91,3 +90,4 @@ plt.show()
 - Understanding projectile motion is crucial in ballistics, sports physics, and aerospace engineering.
 
 ---
+

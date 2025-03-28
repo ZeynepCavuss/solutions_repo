@@ -172,76 +172,90 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<h1 id="problem-1_1">Problem 1</h1>
 <h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h1>
 <h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
-<p>Projectile motion is governed by Newton's laws and kinematic equations. The motion can be broken into two components:</p>
+<h3 id="understanding-projectile-motion">Understanding Projectile Motion</h3>
+<p>Projectile motion occurs when an object is launched into the air and moves under the influence of gravity alone. This type of motion can be broken into two independent components:
+- <strong>Horizontal motion</strong>: The projectile moves at a constant velocity because there are no forces acting in the horizontal direction (ignoring air resistance).
+- <strong>Vertical motion</strong>: The projectile is influenced by gravity, which causes it to decelerate on the way up and accelerate on the way down.</p>
+<h3 id="key-equations-of-motion">Key Equations of Motion</h3>
+<p>The basic kinematic equations govern the motion:</p>
 <ul>
-<li><strong>Horizontal Motion:</strong> Constant velocity motion</li>
-<li><strong>Vertical Motion:</strong> Motion under constant acceleration due to gravity</li>
+<li><strong>Horizontal position</strong> (constant velocity):
+  $$ x = v_0 \cos(\theta) t $$</li>
+<li><strong>Vertical position</strong> (accelerated motion due to gravity):
+  $$ y = v_0 \sin(\theta) t - \frac{1}{2} g t^2 $$</li>
 </ul>
-<p>The equations of motion are derived as follows:</p>
-<div class="arithmatex">\[ x(t) = v_0 \cos(\theta) t $$
-$$ y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2 \]</div>
-<p>where:
-- <span class="arithmatex">\(v_0\)</span> is the initial velocity,
-- <span class="arithmatex">\(\theta\)</span> is the angle of projection,
-- <span class="arithmatex">\(g\)</span> is the acceleration due to gravity,
-- <span class="arithmatex">\(x(t)\)</span> and <span class="arithmatex">\(y(t)\)</span> describe the projectile's position at time <span class="arithmatex">\(t\)</span>.</p>
-<p>The time of flight is given by:</p>
-<div class="arithmatex">\[ T = \frac{2 v_0 \sin(\theta)}{g} \]</div>
-<p>The horizontal range is then:</p>
-<div class="arithmatex">\[ R = \frac{v_0^2 \sin(2\theta)}{g} \]</div>
-<p>This equation shows that the range depends on both the initial velocity and the launch angle.</p>
-<h2 id="2-useful-formulas-and-definitions">2. Useful Formulas and Definitions</h2>
-<ul>
-<li><strong>Maximum Height:</strong>
-  $$ H = \frac{v_0^2 \sin^2(\theta)}{2g} $$</li>
-<li><strong>Time of Flight:</strong>
-  $$ T = \frac{2 v_0 \sin(\theta)}{g} $$</li>
-<li><strong>Optimal Range Angle:</strong>
-  The range is maximized when $ \theta = 45^\circ $.</li>
-</ul>
-<h2 id="3-example-calculations">3. Example Calculations</h2>
-<h3 id="example-1-finding-the-range-of-a-projectile">Example 1: Finding the Range of a Projectile</h3>
-<p><strong>Given:</strong>
-- $ v_0 = 20 \text{ m/s} $
-- $ g = 9.81 \text{ m/s}^2 $
-- $ \theta = 30^\circ $</p>
-<p><strong>Solution:</strong></p>
-<p>Using the range formula:</p>
-<div class="arithmatex">\[ R = \frac{(20)^2 \sin(60^\circ)}{9.81} $$
-$$ R \approx 35.3 \text{ m} \]</div>
-<h3 id="example-2-finding-the-maximum-height">Example 2: Finding the Maximum Height</h3>
-<p>For the same values:</p>
-<div class="arithmatex">\[ H = \frac{(20)^2 \sin^2(30^\circ)}{2(9.81)} $$
-$$ H \approx 5.1 \text{ m} \]</div>
-<h2 id="4-computational-implementation">4. Computational Implementation</h2>
-<p>To visualize the relationship between range and angle, we implement a Python simulation:
-<img alt="alt text" src="../image-1.png"/></p>
+<h3 id="step-by-step-derivation-of-range">Step-by-Step Derivation of Range</h3>
+<ol>
+<li>
+<p><strong>Find the total time of flight</strong>:
+   The projectile reaches the ground when <span class="arithmatex">\( y = 0 \)</span>, solving for <span class="arithmatex">\( t \)</span>:
+   $$ t_f = \frac{2 v_0 \sin(\theta)}{g} $$
+   This is the total time the projectile spends in the air.</p>
+</li>
+<li>
+<p><strong>Find the range formula</strong>:
+   The range is the total horizontal distance covered before landing:
+   $$ R = v_0 \cos(\theta) \cdot t_f $$
+   Substituting <span class="arithmatex">\( t_f \)</span>:
+   $$ R = \frac{v_0^2 \sin(2\theta)}{g} $$</p>
+</li>
+<li>
+<p><strong>Maximum Range Condition</strong>:</p>
+</li>
+<li>The range is maximized when <span class="arithmatex">\( \sin(2\theta) \)</span> is at its maximum value (which is 1, occurring at <span class="arithmatex">\( 2\theta = 90^\circ \)</span>).</li>
+<li>Therefore, the optimal angle for maximum range is:
+   $$ \theta = 45^\circ $$</li>
+</ol>
+<hr/>
+<h2 id="2-computational-simulation">2. Computational Simulation</h2>
+<p>The following Python script simulates how the range varies with different launch angles:</p>
+<p><img alt="alt text" src="../image-6.png"/></p>
 <pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
 
-g = 9.81  # Gravity (m/s^2)
+# Constants
+g = 9.81  # Acceleration due to gravity (m/s^2)
 v0 = 20   # Initial velocity (m/s)
-angles = np.linspace(0, 90, 100)
-range_values = (v0**2 * np.sin(np.radians(2 * angles))) / g
+angles = np.linspace(0, 90, num=100)  # Angles from 0 to 90 degrees
 
-plt.plot(angles, range_values, label="Range vs. Angle")
-plt.xlabel("Launch Angle (degrees)")
-plt.ylabel("Range (m)")
-plt.title("Projectile Range as a Function of Angle")
+# Convert angles to radians
+theta = np.radians(angles)
+
+# Compute range using the formula R = (v0^2 * sin(2*theta)) / g
+ranges = (v0**2 * np.sin(2 * theta)) / g
+
+# Plot range as a function of the launch angle
+plt.figure(figsize=(8, 5))
+plt.plot(angles, ranges, label=f'Initial velocity = {v0} m/s')
+plt.xlabel('Angle of Projection (degrees)')
+plt.ylabel('Range (m)')
+plt.title('Projectile Range vs. Angle of Projection')
 plt.legend()
 plt.grid()
 plt.show()
 </code></pre>
-<h2 id="5-discussion-and-real-world-applications">5. Discussion and Real-World Applications</h2>
-<ul>
-<li>The idealized model assumes no air resistance. In real-world applications (e.g., sports, engineering), drag significantly affects projectile motion.</li>
-<li>The maximum range occurs at <span class="arithmatex">\(45^\circ\)</span>, but wind and terrain can shift this value.</li>
-<li>Understanding projectile motion is crucial in ballistics, sports physics, and aerospace engineering.</li>
-</ul>
 <hr/>
+<h2 id="3-practical-applications">3. Practical Applications</h2>
+<ol>
+<li><strong>Sports</strong>: Understanding projectile motion helps optimize throwing angles in sports like javelin, soccer, and basketball.</li>
+<li><strong>Engineering</strong>: Trajectory calculations are essential in ballistics and aerospace engineering.</li>
+<li><strong>Military &amp; Defense</strong>: Calculating precise launch angles for missiles or artillery shells is crucial.</li>
+<li><strong>Real-World Factors</strong>: In actual scenarios, air resistance, wind, and terrain variations influence the motion.</li>
+</ol>
+<hr/>
+<h2 id="4-limitations-of-the-ideal-model">4. Limitations of the Ideal Model</h2>
+<ul>
+<li><strong>No Air Resistance</strong>: The equations assume no drag force, but in reality, air resistance can significantly alter the motion.</li>
+<li><strong>Uniform Gravity</strong>: The model assumes gravity is constant, but for long-range projectiles, gravity varies slightly with altitude.</li>
+<li><strong>Flat Terrain</strong>: The derivation assumes the projectile lands at the same height it was launched from. Uneven ground requires adjustments.</li>
+</ul>
+<p><strong>Extensions:</strong>
+- Including air resistance using numerical methods.
+- Analyzing projectile motion on non-level surfaces.
+- Considering wind effects and varying gravitational acceleration for high-altitude or long-range motion.
+```</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

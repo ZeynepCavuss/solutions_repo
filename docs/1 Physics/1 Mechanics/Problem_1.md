@@ -90,3 +90,5 @@ plt.show()
 - Analyzing projectile motion on non-level surfaces.
 - Considering wind effects and varying gravitational acceleration for high-altitude or long-range motion.
 ```
+
+zeynep

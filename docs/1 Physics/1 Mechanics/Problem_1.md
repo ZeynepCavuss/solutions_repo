@@ -161,7 +161,7 @@ $$
 R = \frac{v_0^2 \sin(2\theta)}{g}
 $$
 
-| ![alt text](image-1.png)|![alt text](image-2.png)|
+| ![alt text](image-2.png) | ![alt text](image-1.png) |
 |:-------------------------:|:-------------------------:|
 
 
@@ -242,4 +242,7 @@ Using the general range formula, we get:
 $$ R \approx 45.2 \text{ m} $$
 
 ![alt text](image-3.png)
+
+
+[Colab Link For Plots](https://colab.research.google.com/drive/1Uub5Zy5FAc2V_uo7MS7KPT2KMgN7w0Ck#scrollTo=ZNQJ4M247Usd)
 

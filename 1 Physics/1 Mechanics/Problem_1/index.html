@@ -76,6 +76,14 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#6-example-calculations">6. Example Calculations</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-maximum-range-at-h-0">Example 1: Maximum Range at \(h = 0\)</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-including-launch-height-h-5-textm">Example 2: Including Launch Height (\(h = 5 \, \text{m}\))</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -287,7 +295,6 @@ y(t) = h + v_0 \sin(\theta)t - \frac{1}{2}gt^2 = 0
 t = \frac{v_0 \sin(\theta) + \sqrt{(v_0 \sin(\theta))^2 + 2gh}}{g}
 \]</div>
 <p><strong>Note:</strong> Discard the negative root (time cannot be negative).</p>
-<hr/>
 <h2 id="5-range-of-the-projectile">5. Range of the Projectile</h2>
 <p>The <strong>range</strong> is the horizontal distance when <span class="arithmatex">\(y = 0\)</span>:</p>
 <div class="arithmatex">\[
@@ -317,6 +324,24 @@ R = \frac{v_0^2 \sin(2\theta)}{g}
 </tbody>
 </table>
 <p><img alt="alt text" src="../image-3.png"/></p>
+<h2 id="6-example-calculations">6. Example Calculations</h2>
+<h3 id="example-1-maximum-range-at-h-0">Example 1: Maximum Range at <span class="arithmatex">\(h = 0\)</span></h3>
+<p>If <span class="arithmatex">\(v_0 = 20 \, \text{m/s}\)</span> and <span class="arithmatex">\(\theta = 45^\circ\)</span>:</p>
+<div class="arithmatex">\[
+R = \frac{20^2 \sin(2 \times 45^\circ)}{9.81} \approx 40.8 \, \text{m}
+\]</div>
+<hr/>
+<h3 id="example-2-including-launch-height-h-5-textm">Example 2: Including Launch Height (<span class="arithmatex">\(h = 5 \, \text{m}\)</span>)</h3>
+<p>Use the full range equation with:</p>
+<ul>
+<li><span class="arithmatex">\(v_0 = 20 \, \text{m/s}\)</span>,</li>
+<li><span class="arithmatex">\(\theta = 45^\circ\)</span>,</li>
+<li><span class="arithmatex">\(h = 5 \, \text{m}\)</span></li>
+</ul>
+<p>Numerical solution:</p>
+<div class="arithmatex">\[
+R \approx 45.2 \, \text{m}
+\]</div>
 <p><a href="https://colab.research.google.com/drive/1Uub5Zy5FAc2V_uo7MS7KPT2KMgN7w0Ck#scrollTo=ZNQJ4M247Usd">Colab Link For Plots</a></p>
 </div>
 </div><footer>

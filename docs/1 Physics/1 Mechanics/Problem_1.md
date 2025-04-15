@@ -113,7 +113,6 @@ $$
 
 **Note:** Discard the negative root (time cannot be negative).
 
----
 
 ## 5. Range of the Projectile
 
@@ -142,6 +141,31 @@ $$
 
 ![alt text](image-3.png)
 
+## 6. Example Calculations
+
+### Example 1: Maximum Range at $h = 0$
+
+If $v_0 = 20 \, \text{m/s}$ and $\theta = 45^\circ$:
+
+$$
+R = \frac{20^2 \sin(2 \times 45^\circ)}{9.81} \approx 40.8 \, \text{m}
+$$
+
+---
+
+### Example 2: Including Launch Height ($h = 5 \, \text{m}$)
+
+Use the full range equation with:
+
+- $v_0 = 20 \, \text{m/s}$,
+- $\theta = 45^\circ$,
+- $h = 5 \, \text{m}$
+
+Numerical solution:
+
+$$
+R \approx 45.2 \, \text{m}
+$$
 
 [Colab Link For Plots](https://colab.research.google.com/drive/1Uub5Zy5FAc2V_uo7MS7KPT2KMgN7w0Ck#scrollTo=ZNQJ4M247Usd)
 

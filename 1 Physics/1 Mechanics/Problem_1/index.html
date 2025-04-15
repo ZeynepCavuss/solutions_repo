@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Problem 1: - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Problem 1:";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -46,13 +46,33 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1:</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#investigating-the-range-as-a-function-of-launch-angle">Investigating the Range as a Function of Launch Angle</a>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#1-differential-equations-of-motion">1. Differential Equations of Motion</a>
+<li class="toctree-l3"><a class="reference internal" href="#1-equations-of-motion">1. Equations of Motion</a>
 <ul>
 <li class="toctree-l4"><a class="reference internal" href="#without-air-resistance">Without Air Resistance</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#2-with-air-resistance-linear-drag">2. With Air Resistance (Linear Drag)</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#horizontal-direction">Horizontal Direction</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#vertical-direction">Vertical Direction</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#3-kinematic-equations-no-drag">3. Kinematic Equations (No Drag)</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#4-time-of-flight">4. Time of Flight</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#5-range-of-the-projectile">5. Range of the Projectile</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#insight">Insight</a>
 </li>
 </ul>
 </li>
@@ -171,7 +191,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Problem 1:</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -179,64 +199,54 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h2 id="problem-1-investigating-the-range-as-a-function-of-launch-angle">Problem 1: Investigating the Range as a Function of Launch Angle</h2>
+<h1 id="problem-1">Problem 1:</h1>
+<h2 id="investigating-the-range-as-a-function-of-launch-angle">Investigating the Range as a Function of Launch Angle</h2>
 <hr/>
-<h3 id="motivation">Motivation</h3>
-<p>Projectile motion is a classic physics topic that helps explain the motion of objects under gravity. Our goal is to understand <strong>how the range of a projectile depends on the launch angle</strong>, both:</p>
+<h2 id="motivation">Motivation</h2>
+<p>Projectile motion is a foundational concept in physics, offering insight into how objects move under the influence of gravity. In this project, we aim to explore how the <strong>range</strong> of a projectile depends on the <strong>launch angle</strong>, both:</p>
 <ul>
-<li>analytically (with equations)</li>
-<li>and numerically (via Python simulations)</li>
+<li>Analytically (using kinematic and dynamic equations),</li>
+<li>Numerically (using Python simulations with and without air resistance).</li>
 </ul>
-<p>We’ll start with no air resistance and gradually introduce more realistic effects like <strong>air drag</strong>, <strong>wind</strong>, and <strong>numerical simulation techniques</strong>.</p>
+<p>We'll begin with the ideal case (no air resistance), and progressively consider more realistic scenarios involving <strong>linear air drag</strong>, <strong>wind</strong>, and <strong>computational modeling</strong>.</p>
 <hr/>
-<h3 id="1-differential-equations-of-motion">1. Differential Equations of Motion</h3>
-<h4 id="without-air-resistance">Without Air Resistance</h4>
-<p>We apply Newton’s Second Law:</p>
+<h2 id="1-equations-of-motion">1. Equations of Motion</h2>
+<h3 id="without-air-resistance">Without Air Resistance</h3>
+<p>We apply <strong>Newton’s Second Law</strong>:</p>
 <div class="arithmatex">\[
 \vec{F} = m\vec{a}
 \]</div>
-<h2 id="2-numerical-solution-with-air-resistance">2. Numerical Solution (With Air Resistance)</h2>
-<p><strong>Drag Force:</strong> <span class="arithmatex">\(\vec{F}_{drag} = -k\vec{v}\)</span></p>
-<ul>
-<li>Horizontal direction:
-  $$
-  \frac{d^2x}{dt^2} = 0 \quad \Rightarrow \quad \frac{dx}{dt} = v_0 \cos(\theta)
-  $$</li>
-<li>Vertical direction:
-  $$
-  \frac{d^2y}{dt^2} = -g \quad \Rightarrow \quad \frac{dy}{dt} = v_0 \sin(\theta) - gt
-  $$</li>
-</ul>
+<p>This leads to constant acceleration in the vertical direction and no horizontal acceleration.</p>
 <hr/>
-<h3 id="with-air-resistance-linear-drag">With Air Resistance (Linear Drag)</h3>
-<p>Air drag is modeled as a force proportional to velocity:</p>
+<h2 id="2-with-air-resistance-linear-drag">2. With Air Resistance (Linear Drag)</h2>
+<p>Air drag is modeled as a force proportional to the velocity:</p>
 <div class="arithmatex">\[
 \vec{F}_{\text{drag}} = -k \vec{v}
 \]</div>
-<h4 id="-horizontal-direction">- Horizontal direction:</h4>
+<h3 id="horizontal-direction">Horizontal Direction</h3>
 <div class="arithmatex">\[
 \frac{dv_x}{dt} = -k v_x
 \]</div>
-<h4 id="-vertical-direction">- Vertical direction:</h4>
+<p><img alt="alt text" src="../image.png"/> </p>
+<h3 id="vertical-direction">Vertical Direction</h3>
 <div class="arithmatex">\[
 \frac{dv_y}{dt} = -g - k v_y
 \]</div>
-<p>These are <strong>first-order differential equations</strong> that generally require numerical methods (like Euler’s or Runge-Kutta) to solve.</p>
-<p><img alt="alt text" src="../image.png"/></p>
+<p>These are <strong>first-order differential equations</strong>, typically solved using numerical methods such as <strong>Euler</strong> or <strong>Runge-Kutta</strong>.</p>
 <hr/>
-<h2 id="2-kinematic-equations">2. Kinematic Equations</h2>
-<p>For a projectile launched from height <span class="arithmatex">\(h\)</span>, initial speed <span class="arithmatex">\(v_0\)</span>, and angle <span class="arithmatex">\(\theta\)</span>, the motion can be described by:</p>
+<h2 id="3-kinematic-equations-no-drag">3. Kinematic Equations (No Drag)</h2>
+<p>For a projectile launched from height <span class="arithmatex">\(h\)</span>, initial speed <span class="arithmatex">\(v_0\)</span>, and angle <span class="arithmatex">\(\theta\)</span>:</p>
 <ul>
 <li>
-<p><strong>Horizontal displacement</strong>:
+<p><strong>Horizontal position</strong>:
   $$
   x(t) = v_0 \cos(\theta) \cdot t
   $$</p>
 </li>
 <li>
-<p><strong>Vertical displacement</strong>:
+<p><strong>Vertical position</strong>:
   $$
-  y(t) = h + v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
+  y(t) = h + v_0 \sin(\theta) \cdot t - \frac{1}{2}gt^2
   $$</p>
 </li>
 <li>
@@ -252,61 +262,45 @@
   $$</p>
 </li>
 <li>
-<p><strong>Speed at time <span class="arithmatex">\( t \)</span></strong>:
+<p><strong>Speed at time <span class="arithmatex">\(t\)</span></strong>:
   $$
   v(t) = \sqrt{v_x^2 + v_y(t)^2}
   $$</p>
 </li>
 </ul>
 <p>Where:
-- <span class="arithmatex">\(g\)</span> is the acceleration due to gravity (typically <span class="arithmatex">\(9.81 \, \text{m/s}^2\)</span>),
-- <span class="arithmatex">\(t\)</span> is the time elapsed,
-- <span class="arithmatex">\(x(t)\)</span> and <span class="arithmatex">\(y(t)\)</span> are the positions at time <span class="arithmatex">\(t\)</span>,
-- <span class="arithmatex">\(v_x\)</span>, <span class="arithmatex">\(v_y(t)\)</span> are the velocity components.</p>
-<ul>
-<li>
-<p>Horizontal position:
-  $$
-  x(t) = v_0 \cos(\theta) \cdot t
-  $$</p>
-</li>
-<li>
-<p>Vertical position:
-  $$
-  y(t) = h + v_0 \sin(\theta) \cdot t - \frac{1}{2}gt^2
-  $$</p>
-</li>
-</ul>
+- <span class="arithmatex">\(g = 9.81 \, \text{m/s}^2\)</span> (acceleration due to gravity),
+- <span class="arithmatex">\(t\)</span> is time in seconds,
+- <span class="arithmatex">\(x(t)\)</span> and <span class="arithmatex">\(y(t)\)</span> are the positions at time <span class="arithmatex">\(t\)</span>.</p>
 <hr/>
-<h2 id="3-time-of-flight">⏱ 3. Time of Flight</h2>
-<p>We want to find the total time <span class="arithmatex">\( t \)</span> the projectile stays in the air.</p>
-<p>Set the vertical position <span class="arithmatex">\( y(t) = 0 \)</span> to find when the projectile returns to ground level.</p>
-<p>From the kinematic equation:
-$$
-y(t) = h + v_0 \sin(\theta)t - \frac{1}{2}gt^2
-$$</p>
-<p>Set <span class="arithmatex">\( y(t) = 0 \)</span>:
-$$
-0 = h + v_0 \sin(\theta)t - \frac{1}{2}gt^2
-$$</p>
-<p>This is a quadratic equation in <span class="arithmatex">\( t \)</span>:
-$$
+<h2 id="4-time-of-flight">4. Time of Flight</h2>
+<p>To find how long the projectile is in the air, solve for when it hits the ground:</p>
+<div class="arithmatex">\[
+y(t) = h + v_0 \sin(\theta)t - \frac{1}{2}gt^2 = 0
+\]</div>
+<p>This is a quadratic equation in <span class="arithmatex">\(t\)</span>:</p>
+<div class="arithmatex">\[
 \frac{1}{2}gt^2 - v_0 \sin(\theta)t - h = 0
-$$</p>
-<p>Solve using the quadratic formula:
-$$
+\]</div>
+<p>Solving:</p>
+<div class="arithmatex">\[
 t = \frac{v_0 \sin(\theta) + \sqrt{(v_0 \sin(\theta))^2 + 2gh}}{g}
-$$</p>
-<p><strong>Note:</strong> We discard the negative root since time cannot be negative.</p>
+\]</div>
+<p><strong>Note:</strong> Discard the negative root (time cannot be negative).</p>
 <hr/>
-<h2 id="4-range-of-the-projectile">4. Range of the Projectile</h2>
-<p>The <strong>range</strong> is the horizontal distance when <span class="arithmatex">\( y = 0 \)</span>:</p>
+<h2 id="5-range-of-the-projectile">5. Range of the Projectile</h2>
+<p>The <strong>range</strong> is the horizontal distance when <span class="arithmatex">\(y = 0\)</span>:</p>
 <div class="arithmatex">\[
 R = v_0 \cos(\theta) \cdot t
 \]</div>
-<p>If <span class="arithmatex">\( h = 0 \)</span>, simplifies to:</p>
+<p>If <span class="arithmatex">\(h = 0\)</span>:</p>
 <div class="arithmatex">\[
 R = \frac{v_0^2 \sin(2\theta)}{g}
+\]</div>
+<h3 id="insight">Insight</h3>
+<p>Maximum range occurs when:</p>
+<div class="arithmatex">\[
+\theta = 45^\circ
 \]</div>
 <table>
 <thead>
@@ -322,72 +316,6 @@ R = \frac{v_0^2 \sin(2\theta)}{g}
 </tr>
 </tbody>
 </table>
-<p><strong>Insight</strong>: Maximum range occurs when </p>
-<div class="arithmatex">\[
-\theta = 45^\circ
-\]</div>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-g = 9.81  # gravity (m/s^2)
-
-# Function to generate projectile motion
-def projectile_motion(v0, theta_deg, h=0, dt=0.01):
-    theta = np.radians(theta_deg)
-    vx = v0 * np.cos(theta)
-    vy = v0 * np.sin(theta)
-
-    x, y = [0], [h]
-    t = 0
-    while y[-1] &gt;= 0:
-        t += dt
-        x.append(vx * t)
-        y.append(h + vy * t - 0.5 * g * t**2)
-    return x, y
-
-# -------- Plot (a): Varying Initial Velocity, θ = 45° --------
-v0_list = [30, 40, 50]
-theta_fixed = 45
-
-plt.figure(figsize=(10, 5))
-for v0 in v0_list:
-    x, y = projectile_motion(v0, theta_fixed)
-    plt.plot(x, y, label=f'$v_0$ = {v0} m/s')
-
-plt.title('(a) Varying Initial Velocity at $\\theta$ = 45°')
-plt.xlabel('Range (m)')
-plt.ylabel('Height (m)')
-plt.grid(True)
-plt.legend()
-plt.axis('equal')
-plt.show()
-
-# -------- Plot (b): Varying Angle, v0 = 50 m/s --------
-theta_list = [15, 45, 75]
-v0_fixed = 50
-
-plt.figure(figsize=(10, 5))
-for theta in theta_list:
-    x, y = projectile_motion(v0_fixed, theta)
-    plt.plot(x, y, label=f'$\\theta$ = {theta}°')
-
-plt.title('(b) Varying Launch Angle at $v_0$ = 50 m/s')
-plt.xlabel('Range (m)')
-plt.ylabel('Height (m)')
-plt.grid(True)
-plt.legend()
-plt.axis('equal')
-plt.show()
-</code></pre>
-<h2 id="5-example-calculations"><strong>5. Example Calculations</strong></h2>
-<h3 id="example-1-finding-the-maximum-range"><strong>Example 1: Finding the Maximum Range</strong></h3>
-<p>If <span class="arithmatex">\(v_0 = 20\)</span> m/s and <span class="arithmatex">\(h=0\)</span>,</p>
-<div class="arithmatex">\[ R = \frac{20^2 \sin(2 \times 45^\circ)}{9.81} \approx 40.8 \text{ m} \]</div>
-<h3 id="example-2-effect-of-launch-height"><strong>Example 2: Effect of Launch Height</strong></h3>
-<p>If <span class="arithmatex">\(v_0 = 20\)</span> m/s and <span class="arithmatex">\(h=5\)</span> m,</p>
-<p>Using the general range formula, we get:</p>
-<div class="arithmatex">\[ R \approx 45.2 \text{ m} \]</div>
 <p><img alt="alt text" src="../image-3.png"/></p>
 <p><a href="https://colab.research.google.com/drive/1Uub5Zy5FAc2V_uo7MS7KPT2KMgN7w0Ck#scrollTo=ZNQJ4M247Usd">Colab Link For Plots</a></p>
 </div>

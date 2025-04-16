@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - Physics and Mathematics</title>
+<title>Problem 2: - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "Problem 2:";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -48,8 +48,24 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1:</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2:</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#theoretical-background">Theoretical Background</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#governing-differential-equation">Governing Differential Equation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#small-angle-approximation">Small-Angle Approximation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-definitions">Useful Definitions</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#example-small-angle-linear-case">Example (Small-Angle, Linear Case)</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#given">Given:</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +179,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">Problem 2:</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +187,84 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
+<h1 id="problem-2">Problem 2:</h1>
+<p>### Investigating the Dynamics of a Forced Damped Pendulum</p>
+<p>The <strong>forced damped pendulum</strong> is a classical nonlinear system governed by the interplay of restoring forces (gravity), damping (resistance), and external periodic driving. Its rich dynamics include:</p>
+<ul>
+<li>Simple harmonic motion</li>
+<li>Resonance</li>
+<li>Chaos</li>
+<li>Quasiperiodicity</li>
+</ul>
+<p>This system serves as a model for:
+- Oscillating circuits (RLC)
+- Mechanical vibration systems
+- Energy harvesting devices
+- Climate and biological rhythms</p>
+<p><img alt="alt text" src="../image-9.png"/></p>
+<hr/>
+<h2 id="theoretical-background">Theoretical Background</h2>
+<h3 id="governing-differential-equation">Governing Differential Equation</h3>
+<p>The general form is:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + b\frac{d\theta}{dt} + \frac{g}{L} \sin\theta = A \cos(\omega t)
+\]</div>
+<p><strong>Where:</strong>
+- <span class="arithmatex">\(\theta(t)\)</span>: angular displacement<br/>
+- <span class="arithmatex">\(b\)</span>: damping coefficient<br/>
+- <span class="arithmatex">\(\frac{g}{L}\)</span>: restoring term (natural frequency squared)<br/>
+- <span class="arithmatex">\(A\)</span>: amplitude of driving force<br/>
+- <span class="arithmatex">\(\omega\)</span>: angular frequency of the external drive  </p>
+<hr/>
+<h3 id="small-angle-approximation">Small-Angle Approximation</h3>
+<p>When <span class="arithmatex">\(\theta \ll 1\)</span>, we can approximate:</p>
+<div class="arithmatex">\[
+\sin\theta \approx \theta
+\]</div>
+<p>Resulting in a linearized version:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + b\frac{d\theta}{dt} + \frac{g}{L} \theta = A \cos(\omega t)
+\]</div>
+<hr/>
+<h3 id="useful-definitions">Useful Definitions</h3>
+<ul>
+<li><strong>Natural Frequency:</strong>
+  $$
+  \omega_0 = \sqrt{\frac{g}{L}}
+  $$</li>
+<li><strong>Damping Ratio:</strong>
+  $$
+  \zeta = \frac{b}{2\sqrt{g/L}}
+  $$
+  <strong>Resonance:</strong> occurs when <span class="arithmatex">\(\omega \approx \omega_0\)</span>, which leads to large amplitude oscillations.</li>
+</ul>
+<hr/>
+<h2 id="example-small-angle-linear-case">Example (Small-Angle, Linear Case)</h2>
+<h3 id="given">Given:</h3>
+<ul>
+<li><span class="arithmatex">\(L = 1 \, \text{m}, \quad g = 9.8 \, \text{m/s}^2\)</span></li>
+<li><span class="arithmatex">\(b = 0.5, \quad A = 1.2, \quad \omega = 2.0\)</span></li>
+<li>Initial Conditions: <span class="arithmatex">\(\theta(0) = 0.2 \, \text{rad}, \quad \dot{\theta}(0) = 0\)</span></li>
+</ul>
+<p>The simplified equation becomes:</p>
+<div class="arithmatex">\[
+\frac{d^2\theta}{dt^2} + 0.5 \frac{d\theta}{dt} + 9.8 \theta = 1.2 \cos(2t)
+\]</div>
+<p>This has no analytical closed-form solution in the general case, so we proceed to solve it numerically.</p>
+<hr/>
+<h1 id="python-simulation-visualize-in-colab">Python Simulation (Visualize in Colab)</h1>
+<h3 id="simple-pendulum">SIMPLE PENDULUM</h3>
+<p><img alt="alt text" src="../image-4.png"/></p>
+<h3 id="damped-pendulum">DAMPED PENDULUM</h3>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h3 id="forced-pendulum-no-damping">FORCED PENDULUM (No Damping)</h3>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<h3 id="forced-damped-pendulum">FORCED DAMPED PENDULUM</h3>
+<p><img alt="alt text" src="../image-7.png"/></p>
+<h3 id="chaotic-resonant-pendulum">CHAOTIC / RESONANT PENDULUM</h3>
+<p><img alt="alt text" src="../image-8.png"/></p>
+<hr/>
+<p><a href="https://colab.research.google.com/drive/1qWY-0tRAaNqDoGkIPwVe10uU-DeyS-Uq#scrollTo=fXE-n0q8vLo9">Open in Colab</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

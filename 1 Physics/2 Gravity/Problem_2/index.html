@@ -211,25 +211,30 @@ v_3 = \sqrt{v_{\text{escape\_sun}}^2 + v_{\text{orbital\_earth}}^2}
 </ul>
 <hr/>
 <h2 id="python-code-compute-and-visualize-cosmic-velocities">Python Code: Compute and Visualize Cosmic Velocities</h2>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants">Constants</h1>
-<p>G = 6.67430e-11  # m^3 kg^-1 s^-2</p>
-<h1 id="planet-data-mass-kg-radius-m">Planet data: mass (kg), radius (m)</h1>
-<p>bodies = {
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # m^3 kg^-1 s^-2
+
+# Planet data: mass (kg), radius (m)
+bodies = {
     "Earth": {"mass": 5.972e24, "radius": 6.371e6},
     "Mars": {"mass": 6.417e23, "radius": 3.3895e6},
     "Jupiter": {"mass": 1.898e27, "radius": 6.9911e7}
-}</p>
-<p>results = {}</p>
-<p>for name, data in bodies.items():
+}
+
+results = {}
+
+for name, data in bodies.items():
     M = data["mass"]
     R = data["radius"]
     v1 = np.sqrt(G * M / R)
     v2 = np.sqrt(2 * G * M / R)
-    results[name] = {"v1": v1, "v2": v2}</p>
-<h1 id="plotting">Plotting</h1>
+    results[name] = {"v1": v1, "v2": v2}
+
+# Plotting
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

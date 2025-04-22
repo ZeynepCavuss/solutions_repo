@@ -1,7 +1,7 @@
 # Problem 1
 # Orbital Period and Orbital Radius
 
-## Motivation
+
 
 The relationship between the square of the orbital period and the cube of the orbital radius, known as **Kepler's Third Law**, is a cornerstone of celestial mechanics. This simple yet profound relationship allows for the determination of planetary motions and has implications for understanding gravitational interactions on both local and cosmic scales. By analyzing this relationship, one can connect fundamental principles of gravity with real-world phenomena such as satellite orbits and planetary systems.
 
@@ -56,6 +56,10 @@ This is **Kepler’s Third Law** for circular orbits:
 $$
 T^2 \propto r^3
 $$
+
+![alt text](image-4.png)
+
+![alt text](image-1.png)
 
 ---
 
@@ -114,6 +118,8 @@ $$
 $$  
 is included.
 
+![alt text](image-2.png)
+
 ---
 
 ### b. Planets in the Solar System
@@ -126,35 +132,7 @@ $$
 
 Which confirms Kepler’s Third Law on a solar system scale.
 
+![alt text](image-3.png)
+
 ---
-
-## 4. Python Simulation
-
-This Python simulation verifies the relationship:
-
-$$
-T^2 \propto r^3
-$$
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-G = 6.67430e-11  # gravitational constant (m^3 kg^-1 s^-2)
-M = 5.972e24     # mass of Earth (kg)
-
-# Orbital radii from 7,000 km to 42,000 km
-radii = np.linspace(7e6, 4.2e7, 100)  # in meters
-
-# Compute orbital periods
-periods = 2 * np.pi * np.sqrt(radii**3 / (G * M))  # in seconds
-
-# Plot T² vs r³
-plt.figure(figsize=(8, 5))
-plt.plot(radii**3, periods**2)
-plt.xlabel("r³ (m³)")
-plt.ylabel("T² (s²)")
-plt.title("Kepler’s Third Law: T² vs r³")
-plt.grid(True)
-plt.show()
-``` 
+[Colab Link For Plots](https://colab.research.google.com/drive/1oJIgQAWN5WBpZEPSukw1fkTnO9O2l9qL?usp=sharing)

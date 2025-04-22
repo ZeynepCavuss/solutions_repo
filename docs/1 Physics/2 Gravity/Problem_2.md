@@ -1,8 +1,8 @@
 # Problem 2
 
-# 🚀 Cosmic Velocities and Escape Velocities
+#  Cosmic Velocities and Escape Velocities
 
-## 🧠 Definitions and Concepts
+##  Definitions and Concepts
 
 ### First Cosmic Velocity ($v_1$)
 The minimum velocity an object must have to enter a stable circular orbit just above the surface of a celestial body.
@@ -41,12 +41,12 @@ $$
 
 ---
 
-## 🌍 Example: Earth
+##  Example: Earth
 
 - $M_\text{Earth} = 5.972 \times 10^{24}\,\text{kg}$
 - $R_\text{Earth} = 6.371 \times 10^6\,\text{m}$
 
-### 🔢 Calculations
+### Calculations
 
 #### First Cosmic Velocity (Low Earth Orbit):
 $$
@@ -65,7 +65,7 @@ $$
 
 ---
 
-## 🔴 Mars and 🟣 Jupiter (Summary Table)
+##  Mars and Jupiter (Summary Table)
 
 | Planet  | Radius (km) | Mass ($kg$)        | $v_1$ (km/s) | $v_2$ (km/s) |
 |---------|-------------|---------------------|--------------|--------------|
@@ -75,7 +75,7 @@ $$
 
 ---
 
-## 📊 Visualizations 
+##  Visualizations 
 
 The notebook will include:
 - Graphs of $v_1$, $v_2$ across different planets
@@ -88,7 +88,7 @@ The notebook will include:
 
 ---
 
-## 🛰️ Importance in Space Exploration
+## Importance in Space Exploration
 
 - **$v_1$**: Used for satellites in low Earth orbit (LEO)
 - **$v_2$**: Required for missions to Moon, Mars, etc.

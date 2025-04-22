@@ -1,6 +1,4 @@
 
-<<<<<<< HEAD
-=======
 ## Motivation
 
 Escape velocity is the speed required for an object to break free from a celestial body's gravitational influence. The concept extends to three "cosmic velocities":
@@ -81,4 +79,3 @@ for name, data in bodies.items():
 
 # Plotting
 ```
->>>>>>> 9039af27180902b58777efd54b68015f38d7e23c

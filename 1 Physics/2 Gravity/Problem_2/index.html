@@ -171,68 +171,107 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h2 id="motivation">Motivation</h2>
-<p>Escape velocity is the speed required for an object to break free from a celestial body's gravitational influence. The concept extends to three "cosmic velocities":</p>
-<ol>
-<li><strong>First cosmic velocity</strong>: Orbit a planet</li>
-<li><strong>Second cosmic velocity</strong>: Escape a planet</li>
-<li><strong>Third cosmic velocity</strong>: Escape the star system</li>
-</ol>
-<hr/>
-<h2 id="first-cosmic-velocity-orbital-velocity">First Cosmic Velocity (Orbital Velocity)</h2>
-<p>Minimum speed required to maintain a stable circular orbit around a celestial body:</p>
+<h1 id="problem-2">Problem 2</h1>
+<h1 id="cosmic-velocities-and-escape-velocities">🚀 Cosmic Velocities and Escape Velocities</h1>
+<h2 id="definitions-and-concepts">🧠 Definitions and Concepts</h2>
+<h3 id="first-cosmic-velocity-v_1">First Cosmic Velocity (<span class="arithmatex">\(v_1\)</span>)</h3>
+<p>The minimum velocity an object must have to enter a stable circular orbit just above the surface of a celestial body.</p>
 <div class="arithmatex">\[
-v_1 = \sqrt{\frac{G M}{R}}
+v_1 = \sqrt{\frac{GM}{R}}
 \]</div>
-<p>Where:</p>
 <ul>
-<li><span class="arithmatex">\(G = 6.67430 \times 10^{-11}\,\mathrm{m}^3\!\,\mathrm{kg}^{-1}\!\,\mathrm{s}^{-2}\)</span> is the <strong>gravitational constant</strong>.</li>
-<li><span class="arithmatex">\(M\)</span> is the <strong>mass of the celestial body</strong> (in kilograms).</li>
-<li><span class="arithmatex">\(R\)</span> is the <strong>distance from the center of the celestial body to the object</strong> (in meters).</li>
+<li><span class="arithmatex">\(G\)</span>: Universal gravitational constant (<span class="arithmatex">\(6.674 \times 10^{-11}\,\text{m}^3\text{kg}^{-1}\text{s}^{-2}\)</span>)</li>
+<li><span class="arithmatex">\(M\)</span>: Mass of the celestial body</li>
+<li><span class="arithmatex">\(R\)</span>: Radius of the celestial body</li>
 </ul>
 <hr/>
-<h2 id="second-cosmic-velocity-escape-velocity">Second Cosmic Velocity (Escape Velocity)</h2>
-<p>Minimum speed required to leave a celestial body entirely without returning:</p>
+<h3 id="second-cosmic-velocity-v_2-escape-velocity">Second Cosmic Velocity (<span class="arithmatex">\(v_2\)</span>) - Escape Velocity</h3>
+<p>The velocity required to completely overcome a planet's gravitational pull without further propulsion.</p>
 <div class="arithmatex">\[
-v_2 = \sqrt{\frac{2 G M}{R}} = \sqrt{2} \cdot v_1
+v_2 = \sqrt{2} \cdot v_1 = \sqrt{\frac{2GM}{R}}
 \]</div>
 <hr/>
-<h2 id="third-cosmic-velocity-interstellar-velocity">Third Cosmic Velocity (Interstellar Velocity)</h2>
-<p>Speed needed to escape both Earth and the Sun’s gravity:</p>
-<div class="arithmatex">\[
-v_3 = \sqrt{v_{\text{escape\_sun}}^2 + v_{\text{orbital\_earth}}^2}
-\]</div>
-<p>Where:</p>
+<h3 id="third-cosmic-velocity-v_3">Third Cosmic Velocity (<span class="arithmatex">\(v_3\)</span>)</h3>
+<p>The velocity required to escape the gravitational influence of the Sun from the orbit of the planet.</p>
+<p>Approximate (from Earth’s orbit):
+$$
+v_3 = \sqrt{2} \cdot v_\text{orbital Earth} \approx 42.1 \, \text{km/s}
+$$</p>
+<p>More precisely:
+$$
+v_3 = \sqrt{v_\text{planet}^2 + v_2^2}
+$$</p>
+<hr/>
+<h2 id="example-earth">🌍 Example: Earth</h2>
 <ul>
-<li><span class="arithmatex">\(v_{\text{escape\_sun}}\)</span> is the escape velocity from the Sun at Earth's orbit.</li>
-<li><span class="arithmatex">\(v_{\text{orbital\_earth}}\)</span> is Earth's orbital speed around the Sun.</li>
+<li><span class="arithmatex">\(M_\text{Earth} = 5.972 \times 10^{24}\,\text{kg}\)</span></li>
+<li><span class="arithmatex">\(R_\text{Earth} = 6.371 \times 10^6\,\text{m}\)</span></li>
+</ul>
+<h3 id="calculations">🔢 Calculations</h3>
+<h4 id="first-cosmic-velocity-low-earth-orbit">First Cosmic Velocity (Low Earth Orbit):</h4>
+<div class="arithmatex">\[
+v_1 = \sqrt{\frac{6.674 \times 10^{-11} \cdot 5.972 \times 10^{24}}{6.371 \times 10^6}} \approx 7.91\,\text{km/s}
+\]</div>
+<h4 id="second-cosmic-velocity">Second Cosmic Velocity:</h4>
+<div class="arithmatex">\[
+v_2 = \sqrt{2} \cdot 7.91 \approx 11.2\,\text{km/s}
+\]</div>
+<h4 id="third-cosmic-velocity-to-leave-solar-system-from-earth-orbit">Third Cosmic Velocity (to leave solar system from Earth orbit):</h4>
+<div class="arithmatex">\[
+v_3 \approx 42.1\,\text{km/s}
+\]</div>
+<hr/>
+<h2 id="mars-and-jupiter-summary-table">🔴 Mars and 🟣 Jupiter (Summary Table)</h2>
+<table>
+<thead>
+<tr>
+<th>Planet</th>
+<th>Radius (km)</th>
+<th>Mass (<span class="arithmatex">\(kg\)</span>)</th>
+<th><span class="arithmatex">\(v_1\)</span> (km/s)</th>
+<th><span class="arithmatex">\(v_2\)</span> (km/s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Earth</td>
+<td>6371</td>
+<td><span class="arithmatex">\(5.972 \times 10^{24}\)</span></td>
+<td>7.91</td>
+<td>11.2</td>
+</tr>
+<tr>
+<td>Mars</td>
+<td>3389</td>
+<td><span class="arithmatex">\(6.417 \times 10^{23}\)</span></td>
+<td>3.55</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>Jupiter</td>
+<td>69911</td>
+<td><span class="arithmatex">\(1.898 \times 10^{27}\)</span></td>
+<td>42.1</td>
+<td>59.5</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="visualizations">📊 Visualizations</h2>
+<p>The notebook will include:
+- Graphs of <span class="arithmatex">\(v_1\)</span>, <span class="arithmatex">\(v_2\)</span> across different planets
+- Interactive sliders 
+- Comparison plots</p>
+<p><img alt="alt text" src="../image.png"/></p>
+<p><a href="https://colab.research.google.com/drive/1v6DWySxLkirMVefpGA-SgnkiE9aJqdfZ?usp=sharing">Slider Link + Colab</a></p>
+<hr/>
+<h2 id="importance-in-space-exploration">🛰️ Importance in Space Exploration</h2>
+<ul>
+<li><strong><span class="arithmatex">\(v_1\)</span></strong>: Used for satellites in low Earth orbit (LEO)</li>
+<li><strong><span class="arithmatex">\(v_2\)</span></strong>: Required for missions to Moon, Mars, etc.</li>
+<li><strong><span class="arithmatex">\(v_3\)</span></strong>: Interstellar probes like <em>Voyager 1</em> needed to exceed this</li>
 </ul>
 <hr/>
-<h2 id="python-code-compute-and-visualize-cosmic-velocities">Python Code: Compute and Visualize Cosmic Velocities</h2>
-<pre><code class="language-python">import numpy as np
-import matplotlib.pyplot as plt
-
-# Constants
-G = 6.67430e-11  # m^3 kg^-1 s^-2
-
-# Planet data: mass (kg), radius (m)
-bodies = {
-    "Earth": {"mass": 5.972e24, "radius": 6.371e6},
-    "Mars": {"mass": 6.417e23, "radius": 3.3895e6},
-    "Jupiter": {"mass": 1.898e27, "radius": 6.9911e7}
-}
-
-results = {}
-
-for name, data in bodies.items():
-    M = data["mass"]
-    R = data["radius"]
-    v1 = np.sqrt(G * M / R)
-    v2 = np.sqrt(2 * G * M / R)
-    results[name] = {"v1": v1, "v2": v2}
-
-# Plotting
-</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

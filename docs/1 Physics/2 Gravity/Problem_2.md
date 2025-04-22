@@ -1,81 +1,98 @@
+# Problem 2
 
-## Motivation
+# 🚀 Cosmic Velocities and Escape Velocities
 
-Escape velocity is the speed required for an object to break free from a celestial body's gravitational influence. The concept extends to three "cosmic velocities":
+## 🧠 Definitions and Concepts
 
-1. **First cosmic velocity**: Orbit a planet
-2. **Second cosmic velocity**: Escape a planet
-3. **Third cosmic velocity**: Escape the star system
+### First Cosmic Velocity ($v_1$)
+The minimum velocity an object must have to enter a stable circular orbit just above the surface of a celestial body.
+
+$$
+v_1 = \sqrt{\frac{GM}{R}}
+$$
+
+- $G$: Universal gravitational constant ($6.674 \times 10^{-11}\,\text{m}^3\text{kg}^{-1}\text{s}^{-2}$)
+- $M$: Mass of the celestial body
+- $R$: Radius of the celestial body
 
 ---
 
-## First Cosmic Velocity (Orbital Velocity)
-
-Minimum speed required to maintain a stable circular orbit around a celestial body:
-
-$$
-v_1 = \sqrt{\frac{G M}{R}}
-$$
-
-Where:
-
-- $G = 6.67430 \times 10^{-11}\,\mathrm{m}^3\!\,\mathrm{kg}^{-1}\!\,\mathrm{s}^{-2}$ is the **gravitational constant**.
-- $M$ is the **mass of the celestial body** (in kilograms).
-- $R$ is the **distance from the center of the celestial body to the object** (in meters).
-
-
----
-
-## Second Cosmic Velocity (Escape Velocity)
-
-Minimum speed required to leave a celestial body entirely without returning:
+### Second Cosmic Velocity ($v_2$) - Escape Velocity
+The velocity required to completely overcome a planet's gravitational pull without further propulsion.
 
 $$
-v_2 = \sqrt{\frac{2 G M}{R}} = \sqrt{2} \cdot v_1
+v_2 = \sqrt{2} \cdot v_1 = \sqrt{\frac{2GM}{R}}
 $$
 
 ---
 
-## Third Cosmic Velocity (Interstellar Velocity)
+### Third Cosmic Velocity ($v_3$)
+The velocity required to escape the gravitational influence of the Sun from the orbit of the planet.
 
-Speed needed to escape both Earth and the Sun’s gravity:
-
+Approximate (from Earth’s orbit):
 $$
-v_3 = \sqrt{v_{\text{escape\_sun}}^2 + v_{\text{orbital\_earth}}^2}
+v_3 = \sqrt{2} \cdot v_\text{orbital Earth} \approx 42.1 \, \text{km/s}
 $$
 
-Where:
-
-- $v_{\text{escape\_sun}}$ is the escape velocity from the Sun at Earth's orbit.
-- $v_{\text{orbital\_earth}}$ is Earth's orbital speed around the Sun.
-
+More precisely:
+$$
+v_3 = \sqrt{v_\text{planet}^2 + v_2^2}
+$$
 
 ---
 
-## Python Code: Compute and Visualize Cosmic Velocities
+## 🌍 Example: Earth
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
+- $M_\text{Earth} = 5.972 \times 10^{24}\,\text{kg}$
+- $R_\text{Earth} = 6.371 \times 10^6\,\text{m}$
 
-# Constants
-G = 6.67430e-11  # m^3 kg^-1 s^-2
+### 🔢 Calculations
 
-# Planet data: mass (kg), radius (m)
-bodies = {
-    "Earth": {"mass": 5.972e24, "radius": 6.371e6},
-    "Mars": {"mass": 6.417e23, "radius": 3.3895e6},
-    "Jupiter": {"mass": 1.898e27, "radius": 6.9911e7}
-}
+#### First Cosmic Velocity (Low Earth Orbit):
+$$
+v_1 = \sqrt{\frac{6.674 \times 10^{-11} \cdot 5.972 \times 10^{24}}{6.371 \times 10^6}} \approx 7.91\,\text{km/s}
+$$
 
-results = {}
+#### Second Cosmic Velocity:
+$$
+v_2 = \sqrt{2} \cdot 7.91 \approx 11.2\,\text{km/s}
+$$
 
-for name, data in bodies.items():
-    M = data["mass"]
-    R = data["radius"]
-    v1 = np.sqrt(G * M / R)
-    v2 = np.sqrt(2 * G * M / R)
-    results[name] = {"v1": v1, "v2": v2}
+#### Third Cosmic Velocity (to leave solar system from Earth orbit):
+$$
+v_3 \approx 42.1\,\text{km/s}
+$$
 
-# Plotting
-```
+---
+
+## 🔴 Mars and 🟣 Jupiter (Summary Table)
+
+| Planet  | Radius (km) | Mass ($kg$)        | $v_1$ (km/s) | $v_2$ (km/s) |
+|---------|-------------|---------------------|--------------|--------------|
+| Earth   | 6371        | $5.972 \times 10^{24}$ | 7.91         | 11.2         |
+| Mars    | 3389        | $6.417 \times 10^{23}$ | 3.55         | 5.0          |
+| Jupiter | 69911       | $1.898 \times 10^{27}$ | 42.1         | 59.5         |
+
+---
+
+## 📊 Visualizations 
+
+The notebook will include:
+- Graphs of $v_1$, $v_2$ across different planets
+- Interactive sliders 
+- Comparison plots
+
+![alt text](image.png)
+
+[Slider Link + Colab](https://colab.research.google.com/drive/1v6DWySxLkirMVefpGA-SgnkiE9aJqdfZ?usp=sharing)
+
+---
+
+## 🛰️ Importance in Space Exploration
+
+- **$v_1$**: Used for satellites in low Earth orbit (LEO)
+- **$v_2$**: Required for missions to Moon, Mars, etc.
+- **$v_3$**: Interstellar probes like *Voyager 1* needed to exceed this
+
+---
+

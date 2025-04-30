@@ -172,6 +172,258 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-3">Problem 3</h1>
+<h1 id="trajectories-of-a-freely-released-payload-near-earth">Trajectories of a Freely Released Payload Near Earth</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#theoretical-background">Theoretical Background</a></li>
+<li><a href="#newtons-law-of-gravitation">Newton's Law of Gravitation</a></li>
+<li><a href="#keplers-laws">Kepler's Laws</a></li>
+<li><a href="#types-of-trajectories">Types of Trajectories</a></li>
+<li><a href="#orbital-elements">Orbital Elements</a></li>
+<li><a href="#mathematical-formulation">Mathematical Formulation</a></li>
+<li><a href="#equations-of-motion">Equations of Motion</a></li>
+<li><a href="#initial-conditions">Initial Conditions</a></li>
+<li>
+<p><a href="#numerical-integration-methods">Numerical Integration Methods</a></p>
+</li>
+<li>
+<p><a href="#visualization-and-analysis">Visualization and Analysis</a></p>
+</li>
+<li><a href="#trajectory-visualization">Trajectory Visualization</a></li>
+<li><a href="#phase-space-analysis">Phase Space Analysis</a></li>
+<li><a href="#critical-parameters">Critical Parameters</a></li>
+<li><a href="#applications">Applications</a></li>
+<li><a href="#orbital-insertion">Orbital Insertion</a></li>
+<li><a href="#reentry-scenarios">Reentry Scenarios</a></li>
+<li><a href="#escape-trajectories">Escape Trajectories</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<h2 id="introduction">Introduction</h2>
+<p>When an object is released from a moving rocket near Earth, its subsequent trajectory is governed by a complex interplay of initial conditions and gravitational forces. Understanding these trajectories is fundamental to space mission planning, satellite deployment, and spacecraft operations.</p>
+<p>This document explores the mathematical principles behind payload trajectories, implements numerical simulations using Python, and visualizes different trajectory scenarios based on varying initial conditions. We'll examine how slight changes in release parameters can result in dramatically different outcomes, from stable orbits to escape trajectories or atmospheric reentry.</p>
+<h2 id="theoretical-background">Theoretical Background</h2>
+<h3 id="newtons-law-of-gravitation">Newton's Law of Gravitation</h3>
+<p>The foundation of orbital mechanics lies in Newton's Law of Universal Gravitation, which states that two bodies attract each other with a force proportional to the product of their masses and inversely proportional to the square of the distance between them:</p>
+<div class="arithmatex">\[F_g = G\frac{m_1 m_2}{r^2}\]</div>
+<p>Where:
+- <span class="arithmatex">\(F_g\)</span> is the gravitational force
+- <span class="arithmatex">\(G\)</span> is the universal gravitational constant (<span class="arithmatex">\(6.67430 \times 10^{-11} \text{ m}^3 \text{ kg}^{-1} \text{ s}^{-2}\)</span>)
+- <span class="arithmatex">\(m_1\)</span> and <span class="arithmatex">\(m_2\)</span> are the masses of the two bodies
+- <span class="arithmatex">\(r\)</span> is the distance between the centers of the two bodies</p>
+<p>For a payload near Earth, this simplifies to:</p>
+<div class="arithmatex">\[\vec{F}_g = -\frac{GM_E m}{r^2} \hat{r}\]</div>
+<p>Where:
+- <span class="arithmatex">\(M_E\)</span> is Earth's mass (<span class="arithmatex">\(5.97219 \times 10^{24} \text{ kg}\)</span>)
+- <span class="arithmatex">\(m\)</span> is the payload mass
+- <span class="arithmatex">\(r\)</span> is the distance from Earth's center
+- <span class="arithmatex">\(\hat{r}\)</span> is the unit vector pointing from Earth to the payload</p>
+<h3 id="keplers-laws">Kepler's Laws</h3>
+<p>Kepler's laws describe the motion of objects under gravitational influence:</p>
+<ol>
+<li><strong>First Law</strong>: The orbit of a planet is an ellipse with the Sun at one of the two foci.</li>
+<li><strong>Second Law</strong>: A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.</li>
+<li><strong>Third Law</strong>: The square of the orbital period is proportional to the cube of the semi-major axis of the orbit.</li>
+</ol>
+<p>For a payload near Earth, these laws apply with Earth as the central body.</p>
+<h3 id="types-of-trajectories">Types of Trajectories</h3>
+<p>Depending on the payload's energy at release, its trajectory will fall into one of these categories:</p>
+<ol>
+<li><strong>Circular Orbit</strong>: When the velocity is exactly equal to the circular orbital velocity at that altitude.</li>
+<li>
+<p><span class="arithmatex">\(v_{\text{circular}} = \sqrt{\frac{GM_E}{r}}\)</span></p>
+</li>
+<li>
+<p><strong>Elliptical Orbit</strong>: When the velocity is less than escape velocity but not equal to circular velocity.</p>
+</li>
+<li>
+<p>Characterized by <span class="arithmatex">\(0 &lt; e &lt; 1\)</span> where <span class="arithmatex">\(e\)</span> is eccentricity</p>
+</li>
+<li>
+<p><strong>Parabolic Trajectory</strong>: When the velocity equals escape velocity.</p>
+</li>
+<li><span class="arithmatex">\(v_{\text{escape}} = \sqrt{\frac{2GM_E}{r}}\)</span></li>
+<li>
+<p>Characterized by <span class="arithmatex">\(e = 1\)</span></p>
+</li>
+<li>
+<p><strong>Hyperbolic Trajectory</strong>: When the velocity exceeds escape velocity.</p>
+</li>
+<li>
+<p>Characterized by <span class="arithmatex">\(e &gt; 1\)</span></p>
+</li>
+<li>
+<p><strong>Sub-orbital Trajectory</strong>: When the velocity is insufficient to maintain orbit and the payload will return to Earth's atmosphere.</p>
+</li>
+</ol>
+<p><img alt="alt text" src="../image-8.png"/></p>
+<p><img alt="alt text" src="../image-9.png"/></p>
+<h3 id="orbital-elements">Orbital Elements</h3>
+<p>To fully describe an orbit, we use these key orbital elements:</p>
+<ul>
+<li><strong>Semi-major axis</strong> (<span class="arithmatex">\(a\)</span>): Half of the longest diameter of the elliptical orbit</li>
+<li><strong>Eccentricity</strong> (<span class="arithmatex">\(e\)</span>): Measure of how much the orbit deviates from a circle</li>
+<li><strong>Inclination</strong> (<span class="arithmatex">\(i\)</span>): Angle between the orbital plane and reference plane</li>
+<li><strong>Longitude of the ascending node</strong> (<span class="arithmatex">\(\Omega\)</span>): Angle between reference direction and ascending node</li>
+<li><strong>Argument of periapsis</strong> (<span class="arithmatex">\(\omega\)</span>): Angle between ascending node and periapsis</li>
+<li><strong>True anomaly</strong> (<span class="arithmatex">\(\nu\)</span>): Angle between periapsis and current position</li>
+</ul>
+<h2 id="mathematical-formulation">Mathematical Formulation</h2>
+<h3 id="equations-of-motion">Equations of Motion</h3>
+<p>The motion of a payload in Earth's gravitational field is described by the following differential equations:</p>
+<div class="arithmatex">\[\frac{d^2\vec{r}}{dt^2} = -\frac{GM_E}{r^3}\vec{r}\]</div>
+<p>In Cartesian coordinates:</p>
+<div class="arithmatex">\[\frac{d^2x}{dt^2} = -\frac{GM_E x}{(x^2 + y^2 + z^2)^{3/2}}\]</div>
+<div class="arithmatex">\[\frac{d^2y}{dt^2} = -\frac{GM_E y}{(x^2 + y^2 + z^2)^{3/2}}\]</div>
+<div class="arithmatex">\[\frac{d^2z}{dt^2} = -\frac{GM_E z}{(x^2 + y^2 + z^2)^{3/2}}\]</div>
+<h3 id="initial-conditions">Initial Conditions</h3>
+<p>To solve these equations, we need initial conditions:
+- Initial position vector: <span class="arithmatex">\(\vec{r}_0 = (x_0, y_0, z_0)\)</span>
+- Initial velocity vector: <span class="arithmatex">\(\vec{v}_0 = (v_{x0}, v_{y0}, v_{z0})\)</span></p>
+<p>The specific energy of the orbit is given by:</p>
+<div class="arithmatex">\[\varepsilon = \frac{v^2}{2} - \frac{GM_E}{r}\]</div>
+<p>This energy determines the type of trajectory:
+- <span class="arithmatex">\(\varepsilon &lt; 0\)</span>: Elliptical orbit
+- <span class="arithmatex">\(\varepsilon = 0\)</span>: Parabolic trajectory
+- <span class="arithmatex">\(\varepsilon &gt; 0\)</span>: Hyperbolic trajectory</p>
+<h3 id="numerical-integration-methods">Numerical Integration Methods</h3>
+<p>For precise trajectory calculations, we'll use numerical integration methods. The most common are:</p>
+<ol>
+<li>
+<p><strong>Euler Method</strong>: Simple but less accurate
+   <span class="arithmatex">\(<span class="arithmatex">\(\vec{r}_{n+1} = \vec{r}_n + \vec{v}_n \Delta t\)</span>\)</span>
+<span class="arithmatex">\(<span class="arithmatex">\(\vec{v}_{n+1} = \vec{v}_n + \vec{a}_n \Delta t\)</span>\)</span></p>
+</li>
+<li>
+<p><strong>Runge-Kutta 4th Order Method</strong>: Higher accuracy
+   <span class="arithmatex">\(<span class="arithmatex">\(\vec{r}_{n+1} = \vec{r}_n + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)\)</span>\)</span>
+   where <span class="arithmatex">\(k_1, k_2, k_3, k_4\)</span> are intermediate calculations</p>
+</li>
+<li>
+<p><strong>Verlet Integration</strong>: Better energy conservation
+   <span class="arithmatex">\(<span class="arithmatex">\(\vec{r}_{n+1} = 2\vec{r}_n - \vec{r}_{n-1} + \vec{a}_n \Delta t^2\)</span>\)</span></p>
+</li>
+</ol>
+<p>We'll implement the RK4 method for our simulations due to its balance of accuracy and computational efficiency.</p>
+<h2 id="visualization-and-analysis">Visualization and Analysis</h2>
+<p><img alt="alt text" src="../image-5.png"/></p>
+<h3 id="trajectory-visualization">Trajectory Visualization</h3>
+<p>The visualizations created by our Python code provide insights into how initial conditions affect the resulting trajectories. The 3D plots show:</p>
+<ol>
+<li>The spatial path of the payload relative to Earth</li>
+<li>The shape and orientation of the orbit</li>
+<li>How changes in initial velocity transform orbit types</li>
+</ol>
+<p>The animations further enhance understanding by showing the dynamic nature of orbital motion, including:
+- Varying orbital speeds at different points in elliptical orbits (Kepler's Second Law)
+- Escape trajectories that never return
+- Sub-orbital paths that intersect Earth's surface</p>
+<h3 id="phase-space-analysis">Phase Space Analysis</h3>
+<p>The phase space diagrams illustrate the relationship between:
+- Initial velocity and resulting eccentricity
+- Initial velocity and specific orbital energy
+- The critical thresholds that separate different trajectory types</p>
+<p>These visualizations help identify the narrow "windows" for specific mission requirements, such as:
+- Circular orbit insertion
+- Achieving specific orbital periods
+- Minimum velocity requirements for escape trajectories</p>
+<h3 id="critical-parameters">Critical Parameters</h3>
+<p>Several key parameters determine the trajectory type:</p>
+<ol>
+<li>
+<p><strong>Specific Orbital Energy (ε)</strong>:
+   <span class="arithmatex">\(\varepsilon = \frac{v^2}{2} - \frac{\mu}{r}\)</span>
+   Where <span class="arithmatex">\(\mu = GM_E\)</span>. This energy remains constant throughout the orbit and determines whether the orbit is bound (elliptical) or unbound (hyperbolic).</p>
+</li>
+<li>
+<p><strong>Angular Momentum (h)</strong>:
+   <span class="arithmatex">\(\vec{h} = \vec{r} \times \vec{v}\)</span>
+   This vector is perpendicular to the orbital plane and remains constant in the absence of external torques.</p>
+</li>
+<li>
+<p><strong>Eccentricity (e)</strong>:
+   <span class="arithmatex">\(\vec{e} = \frac{\vec{v} \times \vec{h}}{\mu} - \frac{\vec{r}}{r}\)</span>
+   The magnitude of this vector determines the orbit shape:</p>
+</li>
+<li><span class="arithmatex">\(e = 0\)</span>: Circular</li>
+<li><span class="arithmatex">\(0 &lt; e &lt; 1\)</span>: Elliptical</li>
+<li><span class="arithmatex">\(e = 1\)</span>: Parabolic</li>
+<li>
+<p><span class="arithmatex">\(e &gt; 1\)</span>: Hyperbolic</p>
+</li>
+<li>
+<p><strong>Critical Velocities</strong>:</p>
+</li>
+<li>Circular velocity: <span class="arithmatex">\(v_{\text{circular}} = \sqrt{\frac{\mu}{r}}\)</span></li>
+<li>Escape velocity: <span class="arithmatex">\(v_{\text{escape}} = \sqrt{\frac{2\mu}{r}}\)</span></li>
+</ol>
+<p>Understanding these parameters is crucial for mission planning and payload deployment.</p>
+<h2 id="applications">Applications</h2>
+<h3 id="orbital-insertion">Orbital Insertion</h3>
+<p>For successful orbital insertion, a payload must achieve sufficient velocity in the correct direction. The process typically involves:</p>
+<ol>
+<li><strong>Altitude Selection</strong>: Higher altitudes require less velocity for orbit but more energy to reach.</li>
+<li><strong>Velocity Requirements</strong>: The payload must achieve at least circular velocity at the desired altitude.</li>
+<li><strong>Direction Control</strong>: The velocity vector must be perpendicular to the radius vector for a circular orbit.</li>
+<li><strong>Timing of Release</strong>: For specific orbital characteristics (e.g., sun-synchronous orbits), release timing is critical.</li>
+</ol>
+<p>The minimum energy required for orbital insertion at altitude <span class="arithmatex">\(h\)</span> is:</p>
+<p><span class="arithmatex">\(E_{\text{min}} = \frac{1}{2}m v_{\text{circular}}^2 = \frac{1}{2}m \frac{\mu}{R_E + h}\)</span></p>
+<p>Orbital insertion failures can result from:
+- Insufficient velocity (resulting in suborbital trajectory)
+- Incorrect direction (resulting in elliptical orbit or reentry)
+- Excessive velocity without proper direction (resulting in escape)</p>
+<p><img alt="alt text" src="../image-6.png"/></p>
+<h3 id="altitude-vs-time">Altitude vs Time</h3>
+<p><img alt="alt text" src="../image-7.png"/></p>
+<h3 id="reentry-scenarios">Reentry Scenarios</h3>
+<p>For controlled reentry, the payload's velocity must be reduced to create a trajectory that intersects Earth's atmosphere. Key considerations include:</p>
+<ol>
+<li><strong>Entry Angle</strong>: Too shallow and the payload may skip off the atmosphere; too steep and it may experience excessive heating.</li>
+<li><strong>Deorbit Burn</strong>: The change in velocity (Δv) required to initiate reentry from a circular orbit can be calculated as:</li>
+</ol>
+<p><span class="arithmatex">\(\Delta v = v_{\text{circular}} - \sqrt{v_{\text{circular}}^2 - 2\mu\left(\frac{1}{r} - \frac{1}{r_p}\right)}\)</span></p>
+<p>Where <span class="arithmatex">\(r_p\)</span> is the desired periapsis radius (typically within the atmosphere).</p>
+<ol>
+<li><strong>Heat Shield Requirements</strong>: Determined by the velocity at atmospheric entry and the entry angle.</li>
+<li><strong>Landing Point Prediction</strong>: Depends on entry location, angle, and atmospheric conditions.</li>
+</ol>
+<h3 id="escape-trajectories">Escape Trajectories</h3>
+<p>To escape Earth's gravitational influence, the payload must achieve a velocity greater than the escape velocity:</p>
+<p><span class="arithmatex">\(v_{\text{escape}} = \sqrt{\frac{2\mu}{r}}\)</span></p>
+<p>Applications of escape trajectories include:</p>
+<ol>
+<li><strong>Interplanetary Missions</strong>: Escaping Earth is the first step in reaching other planets.</li>
+<li><strong>Gravity Assists</strong>: Using the gravity of other bodies to gain or lose energy for complex mission trajectories.</li>
+<li><strong>Disposal Orbits</strong>: For spacecraft at end-of-life that should not remain in Earth orbit.</li>
+</ol>
+<p>The excess energy in a hyperbolic escape trajectory determines the asymptotic velocity far from Earth:</p>
+<p><span class="arithmatex">\(v_{\infty} = \sqrt{v^2 - v_{\text{escape}}^2}\)</span></p>
+<p>This parameter is crucial for interplanetary mission planning.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The trajectory of a payload released near Earth depends critically on its initial conditions—position and velocity. By analyzing these trajectories through computational methods, we can:</p>
+<ol>
+<li>Understand the relationship between initial conditions and orbital parameters</li>
+<li>Predict the long-term behavior of released payloads</li>
+<li>Design mission profiles for specific objectives:</li>
+<li>Stable orbits for satellites</li>
+<li>Precise reentry for returning spacecraft</li>
+<li>Efficient escape paths for interplanetary missions</li>
+</ol>
+<p>The numerical methods and visualizations presented in this document provide tools for exploring these scenarios and understanding the fundamental principles of orbital mechanics. By manipulating initial conditions, we can achieve a wide variety of trajectories, each suited to particular mission requirements.</p>
+<p>The phase space analysis reveals clear boundaries between different trajectory types and illustrates how narrow the margins can be between success and failure in space missions. This underscores the importance of precise calculations and control in astronautical engineering.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>Bate, R.R., Mueller, D.D., &amp; White, J.E. (1971). <em>Fundamentals of Astrodynamics</em>. Dover Publications.</li>
+<li>Curtis, H.D. (2013). <em>Orbital Mechanics for Engineering Students</em>. Butterworth-Heinemann.</li>
+<li>Vallado, D.A. (2013). <em>Fundamentals of Astrodynamics and Applications</em>. Microcosm Press.</li>
+<li>NASA. (2020). <em>Orbital Mechanics</em>. NASA Technical Reports Server.</li>
+<li>Prussing, J.E., &amp; Conway, B.A. (2012). <em>Orbital Mechanics</em>. Oxford University Press.</li>
+<li>Roy, A.E. (2004). <em>Orbital Motion</em>. CRC Press.</li>
+<li>Battin, R.H. (1999). <em>An Introduction to the Mathematics and Methods of Astrodynamics</em>. AIAA.</li>
+<li>Chobotov, V.A. (2002). <em>Orbital Mechanics</em>. AIAA Education Series.</li>
+</ol>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

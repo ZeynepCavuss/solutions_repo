@@ -47,7 +47,6 @@ For this analysis, we'll examine the interference patterns created by wave sourc
 
 ### Mathematical Formulation
 
-
 For a regular polygon with $N$ vertices centered at the origin, the coordinates of each vertex can be calculated as:
 
 $$
@@ -58,18 +57,14 @@ $$
 y_i = R \cdot \sin\left(\frac{2\pi i}{N}\right)
 $$
 
+
 Where:
-- $R$ is the radius of the circumscribed circle of the polygon  
-- $i$ ranges from 0 to $N - 1$
+- $R$ is the radius of the circumscribed circle of the polygon
+- $i$ ranges from 0 to $N-1$
 
 The total wave displacement at any point $(x, y)$ at time $t$ is:
 
-$$
-\eta_{\text{sum}}(x, y, t) = \sum_{i=0}^{N-1} \frac{A}{\sqrt{r_i}} \cdot \cos(kr_i - \omega t + \phi_i)
-$$
-
-
-
+$$\eta_{\text{sum}}(x, y, t) = \sum_{i=0}^{N-1} \frac{A}{\sqrt{r_i}} \cdot \cos(kr_i - \omega t + \phi_i)$$
 
 Where:
 - $r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2}$ is the distance from the $i$-th source to point $(x, y)$

@@ -47,11 +47,13 @@ For this analysis, we'll examine the interference patterns created by wave sourc
 
 ### Mathematical Formulation
 
+
 For a regular polygon with $N$ vertices centered at the origin, the coordinates of each vertex can be calculated as:
 
 $$
 x_i = R \cdot \cos\left(\frac{2\pi i}{N}\right)
 $$
+
 $$
 y_i = R \cdot \sin\left(\frac{2\pi i}{N}\right)
 $$
@@ -65,6 +67,8 @@ The total wave displacement at any point $(x, y)$ at time $t$ is:
 $$
 \eta_{\text{sum}}(x, y, t) = \sum_{i=0}^{N-1} \frac{A}{\sqrt{r_i}} \cdot \cos(kr_i - \omega t + \phi_i)
 $$
+
+
 
 
 Where:

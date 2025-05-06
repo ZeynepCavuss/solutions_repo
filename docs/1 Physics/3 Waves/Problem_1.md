@@ -68,7 +68,9 @@ Where:
 
 Let's implement the analysis in Python to visualize the interference patterns for various source arrangements, including both 2D heatmaps and 3D surface plots, with animations.
 
+![alt text](single_source_wave.gif)
 
+![alt text](<single source_3d_animation.gif>)
 
 ## Results and Analysis
 

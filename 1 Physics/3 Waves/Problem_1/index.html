@@ -172,6 +172,152 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="water-surface-interference-patterns-analysis">Water Surface Interference Patterns Analysis</h1>
+<h2 id="introduction-to-wave-interference">Introduction to Wave Interference</h2>
+<p>Wave interference is a fundamental phenomenon in wave physics where two or more waves overlap and combine to form a resultant wave. The principle of superposition states that when multiple waves coincide at the same point in space, the resultant displacement is the algebraic sum of the individual wave displacements. This document explores the interference patterns formed by water waves emanating from point sources positioned at the vertices of a regular polygon.</p>
+<h2 id="key-concepts-and-formulas">Key Concepts and Formulas</h2>
+<h3 id="single-wave-disturbance">Single Wave Disturbance</h3>
+<p>A circular wave on a water surface from a point source located at <span class="arithmatex">\((x_0, y_0)\)</span> can be described by:</p>
+<div class="arithmatex">\[\eta(x, y, t) = \frac{A}{\sqrt{r}} \cdot \cos(kr - \omega t + \phi)\]</div>
+<p>Where:
+- <span class="arithmatex">\(\eta(x, y, t)\)</span> represents the displacement of the water surface at point <span class="arithmatex">\((x, y)\)</span> and time <span class="arithmatex">\(t\)</span>
+- <span class="arithmatex">\(A\)</span> is the amplitude of the wave
+- <span class="arithmatex">\(k = \frac{2\pi}{\lambda}\)</span> is the wave number, related to wavelength <span class="arithmatex">\(\lambda\)</span>
+- <span class="arithmatex">\(\omega = 2\pi f\)</span> is the angular frequency, related to frequency <span class="arithmatex">\(f\)</span>
+- <span class="arithmatex">\(r = \sqrt{(x - x_0)^2 + (y - y_0)^2}\)</span> is the distance from the source to point <span class="arithmatex">\((x, y)\)</span>
+- <span class="arithmatex">\(\phi\)</span> is the initial phase angle</p>
+<h3 id="principle-of-superposition">Principle of Superposition</h3>
+<p>When multiple waves overlap, the total displacement at any point is the sum of individual displacements:</p>
+<div class="arithmatex">\[\eta_{\text{sum}}(x, y, t) = \sum_{i=1}^{N} \eta_i(x, y, t)\]</div>
+<p>Where <span class="arithmatex">\(N\)</span> is the number of wave sources.</p>
+<h3 id="constructive-and-destructive-interference">Constructive and Destructive Interference</h3>
+<ul>
+<li><strong>Constructive interference</strong> occurs when waves combine to create a larger amplitude. This happens when waves are approximately in phase.</li>
+<li><strong>Destructive interference</strong> occurs when waves combine to create a smaller amplitude or cancel each other out. This happens when waves are approximately out of phase.</li>
+</ul>
+<p>The path difference <span class="arithmatex">\(\Delta r\)</span> between two sources determines the type of interference:
+- Constructive interference: <span class="arithmatex">\(\Delta r = n\lambda\)</span> (where <span class="arithmatex">\(n = 0, 1, 2, ...\)</span>)
+- Destructive interference: <span class="arithmatex">\(\Delta r = (n+\frac{1}{2})\lambda\)</span> (where <span class="arithmatex">\(n = 0, 1, 2, ...\)</span>)</p>
+<h2 id="analysis-of-interference-patterns-for-a-regular-polygon">Analysis of Interference Patterns for a Regular Polygon</h2>
+<p>For this analysis, we'll examine the interference patterns created by wave sources placed at the vertices of a regular polygon. We'll focus on three cases:
+1. Equilateral triangle (3 vertices)
+2. Square (4 vertices)
+3. Regular pentagon (5 vertices)</p>
+<h3 id="mathematical-formulation">Mathematical Formulation</h3>
+<p>For a regular polygon with <span class="arithmatex">\(N\)</span> vertices centered at the origin, the coordinates of each vertex can be calculated as:</p>
+<div class="arithmatex">\[x_i = R \cdot \cos\left(\frac{2\pi i}{N}\right)$$
+$$y_i = R \cdot \sin\left(\frac{2\pi i}{N}\right)\]</div>
+<p>Where:
+- <span class="arithmatex">\(R\)</span> is the radius of the circumscribed circle of the polygon
+- <span class="arithmatex">\(i\)</span> ranges from 0 to <span class="arithmatex">\(N-1\)</span></p>
+<p>The total wave displacement at any point <span class="arithmatex">\((x, y)\)</span> at time <span class="arithmatex">\(t\)</span> is:</p>
+<div class="arithmatex">\[\eta_{\text{sum}}(x, y, t) = \sum_{i=0}^{N-1} \frac{A}{\sqrt{r_i}} \cdot \cos(kr_i - \omega t + \phi_i)\]</div>
+<p>Where:
+- <span class="arithmatex">\(r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2}\)</span> is the distance from the <span class="arithmatex">\(i\)</span>-th source to point <span class="arithmatex">\((x, y)\)</span>
+- <span class="arithmatex">\(\phi_i\)</span> is the initial phase of the <span class="arithmatex">\(i\)</span>-th source</p>
+<h2 id="python-implementation-and-visualization">Python Implementation and Visualization</h2>
+<p>Let's implement the analysis in Python to visualize the interference patterns for various source arrangements, including both 2D heatmaps and 3D surface plots, with animations.</p>
+<h2 id="single-source">Single Source</h2>
+<p><img alt="alt text" src="single_source_wave-1.gif"/></p>
+<p><img alt="alt text" src="single source_3d_animation-1.gif"/></p>
+<p>## Two Source</p>
+<p><img alt="alt text" src="two_sources_interference.gif"/></p>
+<p><img alt="alt text" src="two sources_3d_animation.gif"/></p>
+<p>## Three Source</p>
+<p><img alt="alt text" src="3_sources_interference.gif"/></p>
+<p><img alt="alt text" src="triangle_3d_animation (1).gif"/></p>
+<p>## Four Source</p>
+<p><img alt="alt text" src="4_sources_interference.gif"/></p>
+<p><img alt="alt text" src="square_3d_animation.gif"/></p>
+<h2 id="results-and-analysis">Results and Analysis</h2>
+<h3 id="single-source-analysis">Single Source Analysis</h3>
+<p>When examining the wave pattern from a single source:</p>
+<ol>
+<li>
+<p><strong>Circular Symmetry</strong>: The pattern shows perfect circular symmetry, with concentric rings of crests and troughs radiating outward.</p>
+</li>
+<li>
+<p><strong>Amplitude Decay</strong>: The wave amplitude decreases as <span class="arithmatex">\(1/\sqrt{r}\)</span> with distance from the source, following the conservation of energy as the wave spreads out.</p>
+</li>
+<li>
+<p><strong>Phase Progression</strong>: The phase of the wave progresses radially outward, with adjacent crests separated by one wavelength.</p>
+</li>
+<li>
+<p><strong>No Interference</strong>: With only one source, there is no interference pattern - the displacement at any point is determined solely by the distance from the source and the wave properties.</p>
+</li>
+</ol>
+<h3 id="two-sources-interference">Two Sources Interference</h3>
+<p>The two-source interference pattern reveals several key features:</p>
+<ol>
+<li>
+<p><strong>Hyperbolic Nodal Lines</strong>: We observe hyperbolic lines of destructive interference where the path difference between waves from the two sources equals <span class="arithmatex">\((n+\frac{1}{2})\lambda\)</span>, creating nodal lines.</p>
+</li>
+<li>
+<p><strong>Constructive Interference</strong>: Along the perpendicular bisector of the line connecting the two sources, we see constructive interference because waves arrive with equal path lengths.</p>
+</li>
+<li>
+<p><strong>Standing Wave Pattern</strong>: Between the sources, a standing wave pattern forms, with alternating regions of constructive and destructive interference.</p>
+</li>
+<li>
+<p><strong>Symmetry</strong>: The pattern exhibits symmetry about both the line connecting the sources and the perpendicular bisector of that line.</p>
+</li>
+</ol>
+<h3 id="equilateral-triangle-3-sources">Equilateral Triangle (3 Sources)</h3>
+<p>When we analyze the interference pattern from three sources arranged in an equilateral triangle:</p>
+<ol>
+<li>
+<p><strong>Three-fold Rotational Symmetry</strong>: The pattern shows three-fold rotational symmetry, reflecting the geometry of the source arrangement.</p>
+</li>
+<li>
+<p><strong>Nodal Lines</strong>: We observe lines of destructive interference (nodes) radiating from the center in three primary directions, bisecting the angles between adjacent sources.</p>
+</li>
+<li>
+<p><strong>Central Interference</strong>: At the center of the triangle, all three waves arrive with equal path lengths, leading to constructive interference if the sources are in phase.</p>
+</li>
+<li>
+<p><strong>Hyperbolic Patterns</strong>: Between pairs of sources, we observe hyperbolic patterns of constructive and destructive interference. These hyperbolas represent points of constant path difference between any two sources.</p>
+</li>
+<li>
+<p><strong>Complex Interaction Regions</strong>: The regions where interference patterns from all three pairs of sources overlap create complex interference structures with distinctive amplitude patterns.</p>
+</li>
+</ol>
+<h3 id="square-4-sources">Square (4 Sources)</h3>
+<p>With sources arranged at the vertices of a square:</p>
+<ol>
+<li>
+<p><strong>Four-fold Symmetry</strong>: The interference pattern exhibits four-fold rotational symmetry.</p>
+</li>
+<li>
+<p><strong>Nodal Structure</strong>: Four primary nodal lines emerge from the center, creating a distinctive "cross" pattern of destructive interference.</p>
+</li>
+<li>
+<p><strong>Central Region</strong>: The center shows complex interference behavior that depends on the relative phases of the sources. With all sources in phase, we observe strong constructive interference.</p>
+</li>
+<li>
+<p><strong>Fringe Patterns</strong>: The interference fringes between any two adjacent sources form more intricate patterns compared to the triangle case, with additional interference effects from the other two sources.</p>
+</li>
+<li>
+<p><strong>Secondary Maxima</strong>: Regions of secondary constructive interference appear between the primary nodal lines, creating a checkerboard-like pattern in some areas.</p>
+</li>
+</ol>
+<h3 id="regular-pentagon-5-sources">Regular Pentagon (5 Sources)</h3>
+<p>With five sources arranged in a regular pentagon:</p>
+<ol>
+<li>**Five-fold Symmetry</li>
+</ol>
+<h2 id="time-evolution-and-phase-effects">Time Evolution and Phase Effects</h2>
+<p>The interference patterns evolve over time as the waves propagate. At any fixed point in space, the displacement oscillates as the phases of the contributing waves change with time. The animation demonstrates this dynamic behavior.</p>
+<p>Additionally, we can explore the effect of introducing phase differences between the sources:</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This analysis demonstrates how wave interference patterns emerge from multiple coherent sources arranged in regular polygonal configurations. These patterns exhibit symmetries that reflect the geometrical arrangement of the sources and show both constructive and destructive interference regions.</p>
+<p>The mathematical formulation based on the principle of superposition allows us to predict and visualize these complex patterns. The visualization tools provided in this document can be extended to explore different source configurations, wavelengths, and phase relationships.</p>
+<p>Understanding these interference patterns has applications in various fields, including:
+- Acoustic design and noise cancellation
+- Optical systems and holography
+- Antenna array design in telecommunications
+- Seismic wave analysis</p>
+<p>By manipulating the number of sources, their relative positions, and phases, we can engineer specific interference patterns for practical applications.</p>
+<p><a href="https://colab.research.google.com/drive/1icTpSweIKJ4YhCPco-I5R4p4PUzlqDEP?usp=sharing">COLAB LINK</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

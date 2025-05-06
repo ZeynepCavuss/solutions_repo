@@ -205,13 +205,19 @@
 3. Regular pentagon (5 vertices)</p>
 <h3 id="mathematical-formulation">Mathematical Formulation</h3>
 <p>For a regular polygon with <span class="arithmatex">\(N\)</span> vertices centered at the origin, the coordinates of each vertex can be calculated as:</p>
-<div class="arithmatex">\[x_i = R \cdot \cos\left(\frac{2\pi i}{N}\right)$$
-$$y_i = R \cdot \sin\left(\frac{2\pi i}{N}\right)\]</div>
+<div class="arithmatex">\[
+x_i = R \cdot \cos\left(\frac{2\pi i}{N}\right)
+$$
+$$
+y_i = R \cdot \sin\left(\frac{2\pi i}{N}\right)
+\]</div>
 <p>Where:
-- <span class="arithmatex">\(R\)</span> is the radius of the circumscribed circle of the polygon
-- <span class="arithmatex">\(i\)</span> ranges from 0 to <span class="arithmatex">\(N-1\)</span></p>
+- <span class="arithmatex">\(R\)</span> is the radius of the circumscribed circle of the polygon<br/>
+- <span class="arithmatex">\(i\)</span> ranges from 0 to <span class="arithmatex">\(N - 1\)</span></p>
 <p>The total wave displacement at any point <span class="arithmatex">\((x, y)\)</span> at time <span class="arithmatex">\(t\)</span> is:</p>
-<div class="arithmatex">\[\eta_{\text{sum}}(x, y, t) = \sum_{i=0}^{N-1} \frac{A}{\sqrt{r_i}} \cdot \cos(kr_i - \omega t + \phi_i)\]</div>
+<div class="arithmatex">\[
+\eta_{\text{sum}}(x, y, t) = \sum_{i=0}^{N-1} \frac{A}{\sqrt{r_i}} \cdot \cos(kr_i - \omega t + \phi_i)
+\]</div>
 <p>Where:
 - <span class="arithmatex">\(r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2}\)</span> is the distance from the <span class="arithmatex">\(i\)</span>-th source to point <span class="arithmatex">\((x, y)\)</span>
 - <span class="arithmatex">\(\phi_i\)</span> is the initial phase of the <span class="arithmatex">\(i\)</span>-th source</p>
@@ -221,9 +227,15 @@ $$y_i = R \cdot \sin\left(\frac{2\pi i}{N}\right)\]</div>
 <p><img alt="alt text" src="../single_source_wave.gif"/></p>
 <p><img alt="alt text" src="../single%20source_3d_animation.gif"/></p>
 <hr/>
-<h2 id="two-source">Two Source</h2>
+<h2 id="two-sources">Two Sources</h2>
 <p><img alt="alt text" src="../two_sources_interference.gif"/></p>
 <p><img alt="alt text" src="../two%20sourced3D.gif"/></p>
+<h2 id="triangle-sources">Triangle Sources</h2>
+<p><img alt="alt text" src="../3_sources_interference.gif"/></p>
+<p><img alt="alt text" src="../triangle_3d_animation.gif"/></p>
+<h2 id="square-sources">Square Sources</h2>
+<p><img alt="alt text" src="../4_sources_interference.gif"/></p>
+<p><img alt="alt text" src="../square_3d_animation.gif"/></p>
 <h2 id="results-and-analysis">Results and Analysis</h2>
 <h3 id="single-source-analysis">Single Source Analysis</h3>
 <p>When examining the wave pattern from a single source:</p>

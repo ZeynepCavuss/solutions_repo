@@ -172,6 +172,89 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="electromagnetism-lorentz-force-simulations">Electromagnetism: Lorentz Force Simulations</h1>
+<h2 id="problem-1-simulating-the-effects-of-the-lorentz-force">Problem 1: Simulating the Effects of the Lorentz Force</h2>
+<h3 id="motivation">Motivation</h3>
+<p>The <strong>Lorentz force</strong> governs how charged particles behave in electromagnetic fields. It is expressed as:</p>
+<div class="arithmatex">\[
+\mathbf{F} = q\mathbf{E} + q\mathbf{v} \times \mathbf{B}
+\]</div>
+<p>This law underpins:</p>
+<ul>
+<li>Plasma confinement in fusion reactors</li>
+<li>Particle beams in accelerators</li>
+<li>Mass analysis in spectrometers</li>
+</ul>
+<p>Simulations help us visualize and understand the physical phenomena arising from this force.</p>
+<hr/>
+<h3 id="definitions-and-key-formulas">Definitions and Key Formulas</h3>
+<ul>
+<li>
+<p><strong>Lorentz Force</strong>:
+  $$
+  \mathbf{F} = q (\mathbf{E} + \mathbf{v} \times \mathbf{B})
+  $$</p>
+</li>
+<li>
+<p><strong>Newton's Second Law</strong>:
+  $$
+  \mathbf{F} = m \frac{d\mathbf{v}}{dt}
+  $$</p>
+</li>
+<li>
+<p><strong>Cyclotron Frequency</strong>:
+  $$
+  \omega_c = \frac{qB}{m}
+  $$</p>
+</li>
+<li>
+<p><strong>Larmor Radius</strong>:
+  $$
+  r_L = \frac{mv_\perp}{qB}
+  $$</p>
+</li>
+<li>
+<p><strong>Drift Velocity</strong>:
+  $$
+  \mathbf{v}_d = \frac{\mathbf{E} \times \mathbf{B}}{B^2}
+  $$</p>
+</li>
+</ul>
+<hr/>
+<h3 id="simulation-parameters">Simulation Parameters</h3>
+<p>To ensure visible, macroscopic-scale trajectories, we use:</p>
+<ul>
+<li><strong>Charge</strong>: <span class="arithmatex">\(q = 1\,\text{C}\)</span></li>
+<li><strong>Mass</strong>: <span class="arithmatex">\(m = 1\,\text{g} = 0.001\,\text{kg}\)</span></li>
+</ul>
+<p>These values prevent tiny subatomic trajectories and enable meaningful visualizations.</p>
+<hr/>
+<h3 id="simulation-scenarios">Simulation Scenarios</h3>
+<h4 id="scenario-1-circular-motion-in-uniform-magnetic-field"><strong>Scenario 1: Circular Motion in Uniform Magnetic Field</strong></h4>
+<ul>
+<li><span class="arithmatex">\(\mathbf{v}_0 \perp \mathbf{B}\)</span></li>
+<li><span class="arithmatex">\(\mathbf{E} = 0\)</span></li>
+</ul>
+<h4 id="scenario-2-spiral-motion-helix-along-z-axis"><strong>Scenario 2: Spiral Motion (Helix) Along z-axis</strong></h4>
+<ul>
+<li><span class="arithmatex">\(\mathbf{v}_0\)</span> has both perpendicular and parallel components to <span class="arithmatex">\(\mathbf{B}\)</span></li>
+<li><span class="arithmatex">\(\mathbf{E} = 0\)</span></li>
+</ul>
+<h4 id="scenario-3-drift-trajectory-in-crossed-fields"><strong>Scenario 3: Drift Trajectory in Crossed Fields</strong></h4>
+<ul>
+<li><span class="arithmatex">\(\mathbf{E} \perp \mathbf{B}\)</span></li>
+<li><span class="arithmatex">\(\mathbf{v}_0 = 0\)</span></li>
+<li>Observe motion with constant <strong><span class="arithmatex">\(\mathbf{v}_d = \mathbf{E} \times \mathbf{B} / B^2\)</span></strong></li>
+</ul>
+<hr/>
+<h3 id="scenario-1">Scenario 1</h3>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<h3 id="scenario-2">Scenario 2:</h3>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<h3 id="scenario-3">Scenario 3:</h3>
+<p><img alt="alt text" src="../image-4.png"/></p>
+<h2 id="python-simulation-code">Python Simulation Code</h2>
+<p><img alt="alt text" src="../image-3.png"/></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

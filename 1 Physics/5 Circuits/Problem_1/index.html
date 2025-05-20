@@ -172,6 +172,155 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="circuit-simplification-using-graph-theory">Circuit Simplification Using Graph Theory</h1>
+<h2 id="overview">Overview</h2>
+<p>This project demonstrates how to calculate the equivalent resistance of a circuit using <strong>graph theory</strong> and Python’s <code>NetworkX</code> library. Circuits are represented as graphs where:</p>
+<ul>
+<li><strong>Nodes</strong> are junctions.</li>
+<li><strong>Edges</strong> are resistors with weights representing resistance values in ohms.</li>
+</ul>
+<p>Using series and parallel reduction rules, we iteratively simplify complex configurations. This document includes definitions, formulas, examples, implementation code, visualizations (for Google Colab), and setup instructions.</p>
+<hr/>
+<h2 id="motivation">Motivation</h2>
+<p>Calculating equivalent resistance is essential for analyzing and designing circuits. Traditional methods can be cumbersome for large networks. Graph theory provides:</p>
+<ul>
+<li>A systematic, algorithmic simplification method</li>
+<li>Automation capability</li>
+<li>Cross-disciplinary applicability (EE, Physics, CS)</li>
+</ul>
+<hr/>
+<h2 id="definitions">Definitions</h2>
+<ul>
+<li><strong>Node</strong>: A connection point in the circuit.</li>
+<li><strong>Edge</strong>: A resistor between two nodes; has a resistance value in ohms (<span class="arithmatex">\(\Omega\)</span>).</li>
+<li><strong>Series Configuration</strong>: Resistors connected end-to-end (sequential current flow).</li>
+<li><strong>Parallel Configuration</strong>: Resistors connected between the same two nodes (current splits).</li>
+<li><strong>Equivalent Resistance</strong>: A single resistor that can replace the original network.</li>
+<li><strong>Graph</strong>: A <code>MultiGraph</code> in NetworkX, supporting multiple edges (parallel resistors).</li>
+<li><strong>Degree of a Node</strong>: Number of edges incident to a node.</li>
+</ul>
+<hr/>
+<h2 id="formulas">Formulas</h2>
+<ul>
+<li><strong>Series</strong>: For resistors <span class="arithmatex">\(R_1, R_2, \ldots, R_n\)</span> in series:</li>
+</ul>
+<p>$$
+  R_{\text{eq}} = R_1 + R_2 + \cdots + R_n
+  $$</p>
+<ul>
+<li><strong>Parallel</strong>: For resistors <span class="arithmatex">\(R_1, R_2, \ldots, R_n\)</span> in parallel:</li>
+</ul>
+<p>$$
+  \frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots + \frac{1}{R_n}
+  $$</p>
+<ul>
+<li><strong>Parallel (two resistors)</strong>:</li>
+</ul>
+<p>$$
+  R_{\text{eq}} = \frac{R_1 R_2}{R_1 + R_2}
+  $$</p>
+<hr/>
+<h2 id="examples">Examples</h2>
+<h3 id="example-1-series-circuit">Example 1: Series Circuit</h3>
+<p>Resistors: <span class="arithmatex">\(R_1 = 2\,\Omega\)</span>, <span class="arithmatex">\(R_2 = 3\,\Omega\)</span>, <span class="arithmatex">\(R_3 = 5\,\Omega\)</span> between nodes <strong>B+</strong> and <strong>B-</strong>.</p>
+<p><strong>Graph</strong>: <code>B+ → o1 → o2 → B-</code></p>
+<ul>
+<li>Edges: <code>(B+, o1, 2Ω)</code>, <code>(o1, o2, 3Ω)</code>, <code>(o2, B-, 5Ω)</code></li>
+</ul>
+<p><strong>Simplification</strong>:
+1. Combine: <span class="arithmatex">\(R_1 + R_2 = 5\,\Omega\)</span>
+2. Then: <span class="arithmatex">\(5 + R_3 = 10\,\Omega\)</span></p>
+<p><strong>Result</strong>: <span class="arithmatex">\(R_{\text{eq}} = 10\,\Omega\)</span></p>
+<hr/>
+<h3 id="example-2-parallel-circuit">Example 2: Parallel Circuit</h3>
+<p>Resistors: <span class="arithmatex">\(R_1 = 4\,\Omega\)</span>, <span class="arithmatex">\(R_2 = 6\,\Omega\)</span> between nodes <strong>B+</strong> and <strong>B-</strong></p>
+<p><strong>Graph</strong>: <code>B+ ↔ B-</code> with two edges</p>
+<p><strong>Simplification</strong>:</p>
+<div class="arithmatex">\[
+R_{\text{eq}} = \frac{4 \cdot 6}{4 + 6} = \frac{24}{10} = 2.4\,\Omega
+\]</div>
+<hr/>
+<h3 id="example-3-complex-bridge-circuit">Example 3: Complex Bridge Circuit</h3>
+<p>Nodes: <code>B+, o1, o2, o3, B-</code></p>
+<p>Edges:</p>
+<ul>
+<li><span class="arithmatex">\((B+, o1, 2\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((o1, o2, 3\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((o2, B-, 4\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((B+, o3, 5\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((o3, B-, 6\,\Omega)\)</span></li>
+<li><span class="arithmatex">\((o1, o3, 10\,\Omega)\)</span></li>
+</ul>
+<p>This configuration requires iterative reductions.</p>
+<hr/>
+<h2 id="algorithm-for-equivalent-resistance">Algorithm for Equivalent Resistance</h2>
+<p>We simplify the circuit by applying <strong>series</strong> and <strong>parallel</strong> reductions until only <code>B+</code> and <code>B-</code> remain connected by a single edge.</p>
+<h3 id="steps">Steps:</h3>
+<p><strong>Input</strong>: A <code>MultiGraph</code> <span class="arithmatex">\(G\)</span> with nodes <code>B+</code>, <code>B-</code>, and edges with a <code>resistance</code> attribute.</p>
+<h4 id="series-reduction">Series Reduction:</h4>
+<ul>
+<li>Find a node (e.g., <code>o2</code>) with degree 2 (not <code>B+</code> or <code>B-</code>)</li>
+<li>Let its neighbors be <code>o1</code> and <code>o3</code> with resistances <span class="arithmatex">\(R_1\)</span> and <span class="arithmatex">\(R_2\)</span></li>
+<li>Remove <code>o2</code> and its edges</li>
+<li>Add edge <code>(o1, o3)</code> with resistance <span class="arithmatex">\(R_1 + R_2\)</span></li>
+</ul>
+<h4 id="parallel-reduction">Parallel Reduction:</h4>
+<ul>
+<li>Identify node pairs <code>(u, v)</code> with multiple edges</li>
+<li>Compute:</li>
+</ul>
+<p>$$
+  R_{\text{eq}} = \left( \sum_{i=1}^n \frac{1}{R_i} \right)^{-1}
+  $$</p>
+<ul>
+<li>Replace all parallel edges with one edge of <span class="arithmatex">\(R_{\text{eq}}\)</span></li>
+</ul>
+<p>Repeat until only <code>B+</code> and <code>B-</code> remain.</p>
+<hr/>
+<h2 id="pseudocode">Pseudocode</h2>
+<p><img alt="alt text" src="../image.png"/> </p>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<p><img alt="alt text" src="../image-2.png"/></p>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<h3 id="understanding-labels-in-circuit-simplification">Understanding Labels in Circuit Simplification</h3>
+<p>In the process of simplifying resistor networks, we often use temporary labels to represent groups of resistors that have been combined. These labels help us track and visualize each reduction step without redrawing or recalculating the entire network each time.</p>
+<hr/>
+<h4 id="req-equivalent-resistance"><code>Req</code>: Equivalent Resistance</h4>
+<ul>
+<li><strong>Meaning</strong>: Final total resistance of the entire simplified circuit between the battery terminals (e.g., <code>B+</code> and <code>B-</code>).  </li>
+<li><strong>When it appears</strong>: At the <strong>final step</strong>, once all other resistors have been combined into a single value.</li>
+<li><strong>Example</strong>:
+  $$ Req = R1 + R2 + R3 \quad \text{(if all in series)} $$</li>
+</ul>
+<hr/>
+<h4 id="rpar-parallel-resistance"><code>Rpar</code>: Parallel Resistance</h4>
+<ul>
+<li><strong>Meaning</strong>: Result of combining two or more resistors in <strong>parallel</strong>.  </li>
+<li><strong>How it's calculated</strong>:
+  For two resistors <span class="arithmatex">\( R_a \)</span> and <span class="arithmatex">\( R_b \)</span> in parallel:
+  $$
+  \frac{1}{R_{par}} = \frac{1}{R_a} + \frac{1}{R_b}
+  $$</li>
+<li><strong>Used as a new node</strong> in further simplification steps.</li>
+</ul>
+<hr/>
+<h4 id="r12-r123-r45-etc"><code>R12</code>, <code>R123</code>, <code>R45</code>, etc.</h4>
+<ul>
+<li><strong>Meaning</strong>: Resistors that have been combined in <strong>series</strong>.  </li>
+<li><strong>Naming pattern</strong>:<br/>
+<code>R12</code> = result of <code>R1</code> + <code>R2</code> (in series)<br/>
+<code>R123</code> = <code>R1</code> + <code>R2</code> + <code>R3</code>, and so on.</li>
+<li><strong>Why it's useful</strong>: Keeps track of which resistors have been grouped.</li>
+</ul>
+<hr/>
+<h3 id="battery-terminals-b-and-b-">Battery Terminals: <code>B+</code> and <code>B-</code></h3>
+<ul>
+<li>Represent the <strong>start</strong> and <strong>end</strong> points of the circuit.</li>
+<li>Connected to the <strong>power supply</strong> in most circuit visualizations.</li>
+<li>All calculations reduce to find total resistance <strong>between</strong> these two points.</li>
+</ul>
+<hr/>
+<p>These labels are <strong>not physical components</strong>, but simplification aids — like placeholders — so we can follow each step of reduction visually and mathematically.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

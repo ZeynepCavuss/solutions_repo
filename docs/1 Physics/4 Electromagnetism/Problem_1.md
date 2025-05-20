@@ -79,19 +79,17 @@ These values prevent tiny subatomic trajectories and enable meaningful visualiza
 
 ---
 
-### Scenario 1
+### Scenario 1: Circular Motion
 
-![alt text](image-1.png)
+![alt text](image-5.png)
 
-### Scenario 2:
+### Scenario 2: Spiral Motion (Helix)
 
-![alt text](image-2.png)
+![alt text](image-8.png)
 
-
-### Scenario 3: 
-
-![alt text](image-4.png)
-##  Python Simulation Code
+### Scenario 3: Drift Trajectory in Crossed Fields
 
 
-![alt text](image-3.png)
+![alt text](image.png)
+
+[COLAB LINK](https://colab.research.google.com/drive/1vvLfP2yA6QJZ0z6O_q7yhNmgcpZKc41d?usp=sharing)

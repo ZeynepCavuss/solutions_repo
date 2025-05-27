@@ -172,6 +172,169 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2">Problem 2</h1>
+<h1 id="monte-carlo-estimation-of-pi">Monte Carlo Estimation of <span class="arithmatex">\(\pi\)</span></h1>
+<hr/>
+<h2 id="overview">Overview</h2>
+<p>Monte Carlo methods use randomness to estimate quantities that may be difficult to compute analytically. A classic example is the estimation of <span class="arithmatex">\(\pi\)</span> using probabilistic simulations.</p>
+<p>This document introduces two Monte Carlo approaches for estimating <span class="arithmatex">\(\pi\)</span>:</p>
+<ol>
+<li><strong>Geometric Method</strong>: Random sampling in a square containing a circle.</li>
+<li><strong>Buffon’s Needle</strong>: A probability experiment involving a dropped needle.</li>
+</ol>
+<hr/>
+<h2 id="1-geometric-method-points-inside-a-circle">1. Geometric Method: Points Inside a Circle</h2>
+<h3 id="setup">Setup</h3>
+<p>Consider a unit circle (radius <span class="arithmatex">\(r = 1\)</span>) centered at the origin, inscribed in a square of side length 2.</p>
+<ul>
+<li>
+<p><strong>Area of the circle</strong>:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(A_{\text{circle}} = \pi r^2 = \pi\)</span>\)</span></p>
+</li>
+<li>
+<p><strong>Area of the square</strong>:<br/>
+<span class="arithmatex">\(<span class="arithmatex">\(A_{\text{square}} = (2r)^2 = 4\)</span>\)</span></p>
+</li>
+</ul>
+<h3 id="key-idea">Key Idea</h3>
+<p>If we randomly generate points uniformly within the square, the proportion that falls inside the circle approximates:</p>
+<div class="arithmatex">\[
+\frac{A_{\text{circle}}}{A_{\text{square}}} = \frac{\pi}{4}
+\]</div>
+<p>Rearranging gives an estimate for <span class="arithmatex">\(\pi\)</span>:</p>
+<div class="arithmatex">\[
+\pi \approx 4 \times \frac{N_{\text{inside}}}{N_{\text{total}}}
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(N_{\text{inside}}\)</span>: Number of points inside the circle  </li>
+<li><span class="arithmatex">\(N_{\text{total}}\)</span>: Total number of points sampled</li>
+</ul>
+<p>A point <span class="arithmatex">\((x, y)\)</span> lies inside the unit circle if:</p>
+<div class="arithmatex">\[
+x^2 + y^2 \leq 1
+\]</div>
+<h3 id="simulation-steps">Simulation Steps</h3>
+<ol>
+<li>Generate <span class="arithmatex">\(N\)</span> random points in the square <span class="arithmatex">\([-1, 1] \times [-1, 1]\)</span>.</li>
+<li>Count how many satisfy <span class="arithmatex">\(x^2 + y^2 \leq 1\)</span>.</li>
+<li>Estimate <span class="arithmatex">\(\pi\)</span> using the formula above.</li>
+</ol>
+<hr/>
+<h2 id="2-buffons-needle-experiment">2. Buffon's Needle Experiment</h2>
+<h3 id="setup_1">Setup</h3>
+<p>Buffon’s Needle estimates <span class="arithmatex">\(\pi\)</span> by simulating a needle of length <span class="arithmatex">\(L\)</span> dropped onto a plane with parallel lines spaced <span class="arithmatex">\(T\)</span> units apart (with <span class="arithmatex">\(L \leq T\)</span>).</p>
+<h3 id="needle-crossing-condition">Needle Crossing Condition</h3>
+<p>A needle crosses a line if:</p>
+<div class="arithmatex">\[
+d \leq \frac{L}{2} \sin \theta
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\(d\)</span>: Distance from the needle’s center to the nearest line  </li>
+<li><span class="arithmatex">\(\theta\)</span>: Angle between the needle and the lines</li>
+</ul>
+<h3 id="estimation-formula">Estimation Formula</h3>
+<p>If we repeat the experiment <span class="arithmatex">\(N\)</span>s times and observe <span class="arithmatex">\(C\)</span> crossings:</p>
+<div class="arithmatex">\[
+\pi \approx \frac{2 \cdot L \cdot N}{T \cdot C}
+\]</div>
+<h3 id="simulation-steps_1">Simulation Steps</h3>
+<ol>
+<li>Fix values for <span class="arithmatex">\(L\)</span> and <span class="arithmatex">\(T\)</span>.</li>
+<li>For each drop:</li>
+<li>Sample <span class="arithmatex">\(d \sim \text{Uniform}(0, T/2)\)</span></li>
+<li>Sample <span class="arithmatex">\(\theta \sim \text{Uniform}(0, \pi/2)\)</span></li>
+<li>Count how many times the condition<br/>
+<span class="arithmatex">\(d \leq \frac{L}{2} \sin \theta\)</span> is satisfied.</li>
+<li>Use the formula to estimate <span class="arithmatex">\(\pi\)</span>.</li>
+</ol>
+<hr/>
+<p><img alt="alt text" src="../circle_pi_animationZ.gif"/></p>
+<p><img alt="alt text" src="../buffon_needle_animationZ.gif"/></p>
+<h2 id="comparison-table">Comparison Table</h2>
+<table>
+<thead>
+<tr>
+<th>Iterations</th>
+<th>Circle Method <span class="arithmatex">\(\pi\)</span> Estimate</th>
+<th>Circle Error (%)</th>
+<th>Buffon’s Needle <span class="arithmatex">\(\pi\)</span> Estimate</th>
+<th>Buffon Error (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>3.160000</td>
+<td>0.58</td>
+<td>3.050000</td>
+<td>2.88</td>
+</tr>
+<tr>
+<td>500</td>
+<td>3.136000</td>
+<td>0.49</td>
+<td>3.180000</td>
+<td>1.26</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>3.141200</td>
+<td>0.01</td>
+<td>3.130000</td>
+<td>0.35</td>
+</tr>
+<tr>
+<td>3000</td>
+<td>3.143000</td>
+<td>0.05</td>
+<td>3.140000</td>
+<td>0.03</td>
+</tr>
+<tr>
+<td>5000</td>
+<td>3.142400</td>
+<td>0.06</td>
+<td>3.139000</td>
+<td>0.06</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>3.141500</td>
+<td>0.00</td>
+<td>3.141500</td>
+<td>0.00</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><img alt="alt text" src="../image-3.png"/></p>
+<h2 id="discussion">Discussion</h2>
+<h3 id="convergence">Convergence</h3>
+<ul>
+<li>Both methods improve with larger sample sizes due to the <strong>Law of Large Numbers</strong>.</li>
+<li>Accuracy increases roughly with the rate <span class="arithmatex">\(\frac{1}{\sqrt{N}}\)</span>.</li>
+</ul>
+<h3 id="efficiency">Efficiency</h3>
+<ul>
+<li><strong>Circle Method</strong> is simpler and computationally faster.</li>
+<li><strong>Buffon’s Needle</strong> is conceptually elegant but involves more complex sampling and is less efficient for small <span class="arithmatex">\(N\)</span>.</li>
+</ul>
+<h3 id="visualization">Visualization</h3>
+<ul>
+<li><strong>Circle Method</strong>: Color-coded plot of inside vs. outside points.</li>
+<li><strong>Buffon’s Needle</strong>: Diagram showing lines and needle crossings.</li>
+</ul>
+<hr/>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Both methods estimate <span class="arithmatex">\(\pi\)</span> using randomness and probability.</li>
+<li>The <strong>Circle Method</strong> is straightforward and converges quickly.</li>
+<li><strong>Buffon’s Needle</strong> provides a probabilistic insight into geometry and can be used to experimentally derive <span class="arithmatex">\(\pi\)</span>.</li>
+<li>The choice depends on educational purpose, complexity, and computational resources.</li>
+</ul>
+<hr/>
+<p><a href="https://colab.research.google.com/drive/1RuRbRAxmVTjuMD-34N5CSNZGeOdEkh3o?usp=sharing">COLAB LINK</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

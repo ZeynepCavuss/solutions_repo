@@ -21,10 +21,13 @@ This document introduces two Monte Carlo approaches for estimating $\pi$:
 Consider a unit circle (radius $r = 1$) centered at the origin, inscribed in a square of side length 2.
 
 - **Area of the circle**:  
-  $$A_{\text{circle}} = \pi r^2 = \pi$$
+
+  $A_{\text{circle}} = \pi r^2 = \pi$
 
 - **Area of the square**:  
-  $$A_{\text{square}} = (2r)^2 = 4$$
+
+  $A_{\text{square}} = (2r)^2 = 4$
+
 
 ### Key Idea
 

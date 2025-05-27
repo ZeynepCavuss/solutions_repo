@@ -172,6 +172,92 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="central-limit-theorem-simulation-study">Central Limit Theorem — Simulation Study</h1>
+<h2 id="objective">Objective</h2>
+<p>To <strong>demonstrate</strong> the Central Limit Theorem (CLT) using simulation by:
+- Sampling from different distributions.
+- Computing sample means.
+- Observing the shape of the sampling distribution.</p>
+<hr/>
+<h2 id="theory">Theory</h2>
+<h3 id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h3>
+<p>Let <span class="arithmatex">\(X_1, X_2, ..., X_n\)</span> be a random sample from a population with mean <span class="arithmatex">\(\mu\)</span> and variance <span class="arithmatex">\(\sigma^2\)</span>.</p>
+<p>Then the standardized sample mean:</p>
+<div class="arithmatex">\[
+Z = \frac{\bar{X} - \mu}{\sigma / \sqrt{n}}
+\]</div>
+<p>approaches a standard normal distribution <span class="arithmatex">\(N(0,1)\)</span> as <span class="arithmatex">\(n \rightarrow \infty\)</span>.</p>
+<hr/>
+<h2 id="key-definitions-and-formulae">Key Definitions and Formulae</h2>
+<ul>
+<li>
+<p><strong>Sample Mean</strong>:
+  $$
+  \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i
+  $$</p>
+</li>
+<li>
+<p><strong>Sample Variance</strong>:
+  $$
+  S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})^2
+  $$</p>
+</li>
+<li>
+<p><strong>Standard Error (SE)</strong>:
+  $$
+  \text{SE} = \frac{\sigma}{\sqrt{n}}
+  $$</p>
+</li>
+</ul>
+<hr/>
+<h2 id="simulation-setup">Simulation Setup</h2>
+<h3 id="step-by-step-plan">Step-by-step Plan:</h3>
+<ol>
+<li>Choose distributions:</li>
+<li>Uniform(0,1)</li>
+<li>Exponential(λ=1)</li>
+<li>
+<p>Binomial(n=10, p=0.5)</p>
+</li>
+<li>
+<p>For each:</p>
+</li>
+<li>Generate a <strong>population</strong> of 100,000 values.</li>
+<li>Take 1000 random samples of size <span class="arithmatex">\(n = 5, 10, 30, 50\)</span>.</li>
+<li>
+<p>Calculate the <strong>mean</strong> of each sample.</p>
+</li>
+<li>
+<p>Plot the histograms of these sample means.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="solution-and-observations">Solution and Observations</h2>
+<p>We simulated the sampling distribution of sample means from:</p>
+<ul>
+<li><strong>Uniform(0,1)</strong>: Flat population; sample means quickly tend toward normality.</li>
+<li><strong>Exponential(λ=1)</strong>: Right-skewed; needs larger <span class="arithmatex">\(n\)</span> to normalize.</li>
+<li><strong>Binomial(n=10, p=0.5)</strong>: Discrete distribution; normalizes moderately quickly.</li>
+</ul>
+<hr/>
+<h2 id="detailed-results">Detailed Results</h2>
+<p>Below are histograms of sample means for increasing sample sizes:</p>
+<p><img alt="alt text" src="../image.png"/></p>
+<p><img alt="alt text" src="../image-1.png"/></p>
+<p>You can see that:</p>
+<ul>
+<li>As <strong>sample size increases</strong>, the distribution of means <strong>becomes more bell-shaped</strong>.</li>
+<li>This confirms the <strong>CLT</strong>, even when the original data is <strong>not normal</strong>.</li>
+</ul>
+<hr/>
+<h2 id="real-world-implications">Real-World Implications</h2>
+<ul>
+<li><strong>Polling</strong>: Aggregating public opinion into averages.</li>
+<li><strong>Quality Control</strong>: Averaging measurements in production.</li>
+<li><strong>Finance</strong>: Averaging returns in portfolios.</li>
+</ul>
+<hr/>
+<p><a href="https://colab.research.google.com/drive/12R567xVEcxF7KWaeI51MbyVPDudWZxQT#scrollTo=Vpsc_SDlhA7l">COLAB LINK</a></p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">

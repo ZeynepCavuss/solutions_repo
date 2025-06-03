@@ -1,7 +1,7 @@
 # Problem 1
-#  Measuring Earth's Gravitational Acceleration with a Pendulum
+# Measuring Earth's Gravitational Acceleration with a Pendulum
 
-##  Learning Objectives
+## Learning Objectives
 - Understand the physics of simple harmonic motion in pendulums
 - Apply error propagation techniques to experimental measurements
 - Calculate gravitational acceleration with proper uncertainty analysis
@@ -138,16 +138,16 @@ $$
 
 ![alt text](image.png)
 
-#  Bracelet Pendulum Experiment — Measuring Earth's Gravity
+# Bracelet Pendulum Experiment — Measuring Earth's Gravity
 
-##  Real-Life Setup
+## Real-Life Setup
 
 - **Object:** Bracelet hung on a thread as a pendulum  
 - **String Length:** 25 cm (0.25 m)  
 - **Environment:** Indoor (to minimize wind/friction)  
 - **Procedure:** Start stopwatch when the bracelet passes the center point; stop after 10 full swings
 
-##  Theoretical Period Formula
+## Theoretical Period Formula
 
 $$
 T = 2\pi \sqrt{\frac{L}{g}} \quad \text{where } L = 0.25 \text{ m}, \, g \approx 9.81 \, \text{m/s}^2
@@ -176,7 +176,7 @@ $$
 
 ---
 
-##  Observations
+## Observations
 
 - Average period: **~1.00 s**
 - Minor variation due to human reaction time
@@ -185,7 +185,7 @@ $$
 
 ---
 
-##  Interpretation
+## Interpretation
 
 ## NOTE
 > "I tied my bracelet to a string about 25 cm long, then let it swing. I used a stopwatch to time 10 full swings for each trial. The values slightly varied due to how I let it go or timed it, but overall the period was around 1 second, matching what physics predicts for that length."
@@ -194,7 +194,7 @@ $$
 
 ![alt text](image-2.png)
 
-##  Sources of Uncertainty and Error Analysis
+## Sources of Uncertainty and Error Analysis
 
 ### 1. Random Errors (Statistical)
 
@@ -213,9 +213,9 @@ $$
 ### 2. Systematic Errors
 
 **Small Angle Approximation:**
-- Assumption: $\sin\theta \approx \theta$
+- Assumption: $\sin(\theta) \approx \theta$
 - Error increases with amplitude
-- For θ = 15°: error ≈ 1.3%
+- For $\theta = 15^\circ$: error ≈ 1.3%
 
 **Air Resistance:**
 - Causes period to increase slightly
@@ -246,7 +246,10 @@ $$
 
 ### 4. Uncertainty Dominance Analysis
 
-From our formula: $\frac{\Delta g}{g} = \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2\frac{\Delta T}{T}\right)^2}$
+From our formula:  
+$$
+\frac{\Delta g}{g} = \sqrt{\left(\frac{\Delta L}{L}\right)^2 + \left(2\frac{\Delta T}{T}\right)^2}
+$$
 
 **Typical values:**
 - Length uncertainty: $\frac{\Delta L}{L} \approx 0.05\%$
@@ -256,7 +259,7 @@ The timing uncertainty is typically dominant due to the factor of 2 in the propa
 
 ---
 
-##  Optimization Strategies
+## Optimization Strategies
 
 ### Improving Accuracy
 
@@ -266,7 +269,7 @@ The timing uncertainty is typically dominant due to the factor of 2 in the propa
    - Less affected by finite bob size
 
 2. **Better timing technique:**
-   - Count many oscillations (10-20)
+   - Count many oscillations (10–20)
    - Use electronic timing if available
    - Multiple independent observers
 
@@ -285,11 +288,11 @@ The timing uncertainty is typically dominant due to the factor of 2 in the propa
 Well-executed experiments should yield:
 - $g = 9.7$ to $9.9$ m/s²
 - Relative uncertainty: 0.1% to 0.5%
-- Agreement within 2-3% of standard value
+- Agreement within 2–3% of standard value
 
 ---
 
-##  Discussion Questions
+## Discussion Questions
 
 1. **Why does the timing uncertainty contribute more heavily to the final uncertainty in $g$?**
 
@@ -327,14 +330,20 @@ Well-executed experiments should yield:
 
 If you collect data for multiple pendulum lengths, you can analyze the relationship between period and length using a linear regression of $T^2$ versus $L$:
 
-$$T^2 = \frac{4\pi^2}{g}L$$
+$$
+T^2 = \frac{4\pi^2}{g}L
+$$
 
 This equation has the form of a straight line:  
-$$T^2 = mL + b$$  
+$$
+T^2 = mL + b
+$$  
 Where the slope is $m = \frac{4\pi^2}{g}$.
 
 From the slope, you can calculate:  
-$$\boxed{g = \frac{4\pi^2}{\text{slope}}}$$
+$$
+\boxed{g = \frac{4\pi^2}{\text{slope}}}
+$$
 
 This approach can yield more precise values of $g$ by averaging out random timing errors.
 
@@ -342,11 +351,13 @@ This approach can yield more precise values of $g$ by averaging out random timin
 
 To assess how well your data fits the theoretical model, use the chi-squared statistic:
 
-$$\chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2}{\sigma_i^2}$$
+$$
+\chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2}{\sigma_i^2}
+$$
 
 Where:
-- $O_i$ = observed values
-- $E_i$ = expected (theoretical) values
+- $O_i$ = observed values  
+- $E_i$ = expected (theoretical) values  
 - $\sigma_i$ = uncertainties of $O_i$
 
 A reduced chi-squared value near 1 indicates good agreement.
@@ -355,9 +366,12 @@ A reduced chi-squared value near 1 indicates good agreement.
 
 When combining multiple measurements with different uncertainties, use a weighted average:
 
-$$\bar{x} = \frac{\sum_i w_i x_i}{\sum_i w_i}, \quad \text{where } w_i = \frac{1}{\sigma_i^2}$$
+$$
+\bar{x} = \frac{\sum_i w_i x_i}{\sum_i w_i}, \quad \text{where } w_i = \frac{1}{\sigma_i^2}
+$$
 
 This gives more influence to measurements with smaller uncertainties, improving the reliability of the final result.
+
 
 ---
 

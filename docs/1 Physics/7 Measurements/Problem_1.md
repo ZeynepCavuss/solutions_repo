@@ -264,24 +264,31 @@ The timing uncertainty is typically dominant due to the factor of 2 in the propa
 ### Improving Accuracy
 
 1. **Use a longer pendulum**
-   - Reduces **relative length uncertainty**
-   - Longer period reduces **timing uncertainty**
-   - Less affected by **finite bob size**
+
+- Reduces **relative length uncertainty**
+- Longer period reduces **timing uncertainty**
+- Less affected by **finite bob size**
+
 
 2. **Apply better timing techniques**
-   - Count many oscillations (10–20)
-   - Use **electronic timing** if available
-   - Use **multiple independent observers**
+
+- Count many oscillations (10–20)
+- Use **electronic timing** if available
+- Use **multiple independent observers**
+
 
 3. **Minimize systematic errors**
-   - Keep amplitude **small** (less than $10^\circ$)
-   - Use a **dense, compact bob**
-   - Account for **bob dimensions**
+
+- Keep amplitude **small** (less than $10^\circ$)
+- Use a **dense, compact bob**
+- Account for **bob dimensions**
+
 
 4. **Use a statistical approach**
-   - Take **many measurements**
-   - Calculate **proper uncertainties**
-   - Identify and remove **outliers**
+
+- Take **many measurements**
+- Calculate **proper uncertainties**
+- Identify and remove **outliers**
 
 ---
 

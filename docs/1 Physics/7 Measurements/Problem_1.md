@@ -300,27 +300,37 @@ Well-executed experiments should yield:
 
 2. **How would increasing the pendulum length affect your measurement?**
 
-   Longer pendulum:
-   - ✅ Reduces relative length uncertainty
-   - ✅ Increases period (easier timing)
-   - ❌ May violate small angle approximation more easily
-   - ❌ More susceptible to air currents
+ Longer pendulum:
+  - ✅ Reduces relative length uncertainty
+  
+  - ✅ Increases period (easier timing)
+
+  - ❌ May violate small angle approximation more easily
+
+  - ❌ More susceptible to air currents
 
 3. **What would happen if you used a larger amplitude?**
 
-   Larger amplitude:
-   - Violates small angle approximation
-   - Period becomes amplitude-dependent
-   - Systematic error increases
-   - Formula $T = 2\pi\sqrt{L/g}$ becomes inaccurate
+  Larger amplitude:
+ 
+  - Violates small angle approximation
+ 
+ - Period becomes amplitude-dependent
+ 
+  - Systematic error increases
+ 
+ - Formula $T = 2\pi\sqrt{L/g}$ becomes inaccurate
 
 4. **How does air resistance affect the measurement?**
-
-   Air resistance:
-   - Causes energy loss
-   - Increases apparent period
-   - Results in underestimated $g$
-   - Effect increases with bob surface area
+  
+  Air resistance:
+  
+ - Causes energy loss
+  
+ - Increases apparent period
+- Results in underestimated $g$
+  
+ - Effect increases with bob surface area
 
 ---
 

@@ -351,9 +351,7 @@ Well-executed experiments should yield:
 If you collect data for multiple pendulum lengths, you can analyze the relationship between period and length using a linear regression of $T^2$ versus $L$:
 
 $$
-
 T^2 = \frac{4\pi^2}{g}L
-
 $$
 
 This equation has the form of a straight line:  
@@ -377,9 +375,7 @@ This approach can yield more precise values of $g$ by averaging out random timin
 To assess how well your data fits the theoretical model, use the chi-squared statistic:
 
 $$
-
 \chi^2 = \sum_{i=1}^n \frac{(O_i - E_i)^2}{\sigma_i^2}
-
 $$
 
 Where:
@@ -394,10 +390,8 @@ A reduced chi-squared value near 1 indicates good agreement.
 When combining multiple measurements with different uncertainties, use a weighted average:
 
 $$
-
 \bar{x} = \frac{\sum_i w_i x_i}{\sum_i w_i}, \quad \text{where } 
 w_i = \frac{1}{\sigma_i^2}
-
 $$
 
 This gives more influence to measurements with smaller uncertainties, improving the reliability of the final result.
